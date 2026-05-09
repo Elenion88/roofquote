@@ -1,52 +1,78 @@
 import { useState } from 'react';
+import { Sparkles } from 'lucide-react';
+import { AddressForm } from './components/AddressForm';
+import { HeroResult } from './components/HeroResult';
+import { MethodsCard } from './components/MethodsCard';
+import { AerialCard } from './components/AerialCard';
+import { EstimateCard } from './components/EstimateCard';
+import { MeasurementBreakdownCard } from './components/MeasurementBreakdownCard';
+import { fetchQuote } from './lib/api';
+import type { QuoteRun } from './lib/types';
 
 export default function App() {
-  const [address, setAddress] = useState('');
   const [pending, setPending] = useState(false);
-  const [result, setResult] = useState<unknown>(null);
+  const [run, setRun] = useState<QuoteRun | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handle = async (address: string) => {
     setPending(true);
-    setResult(null);
+    setError(null);
     try {
-      const r = await fetch('/api/health');
-      const d = await r.json();
-      setResult({ ping: d, address });
+      const r = await fetchQuote(address);
+      setRun(r);
+    } catch (e: any) {
+      setError(String(e?.message ?? e));
     } finally {
       setPending(false);
     }
   };
 
   return (
-    <main className="min-h-screen bg-stone-50 text-stone-900">
-      <div className="mx-auto max-w-3xl px-6 py-16">
-        <h1 className="text-3xl font-semibold tracking-tight">RoofQuote</h1>
-        <p className="mt-2 text-stone-600">
-          Address in. Customer-ready estimate out. Ensemble of independent measurement methods.
+    <main className="min-h-screen bg-stone-50">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-16">
+        <header className="flex items-center gap-2 text-stone-700">
+          <Sparkles className="h-5 w-5" />
+          <span className="font-mono tracking-tight">RoofQuote</span>
+        </header>
+
+        <h1 className="mt-8 text-4xl sm:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">
+          Address in. Customer-ready estimate out.
+        </h1>
+        <p className="mt-3 text-lg text-stone-600 max-w-2xl">
+          Aerial imagery, multi-zoom vision LLM analysis, ensemble consensus, and a contractor-grade quote.
+          No site visit, no ladder, under thirty seconds.
         </p>
 
-        <form onSubmit={submit} className="mt-10 flex gap-3">
-          <input
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            placeholder="123 Main St, Springfield, MO 65802"
-            className="flex-1 rounded-md border border-stone-300 bg-white px-4 py-3 text-base shadow-sm focus:border-stone-500 focus:outline-none"
-          />
-          <button
-            type="submit"
-            disabled={!address || pending}
-            className="rounded-md bg-stone-900 px-5 py-3 text-white font-medium disabled:opacity-50"
-          >
-            {pending ? 'Estimating…' : 'Generate estimate'}
-          </button>
-        </form>
+        <div className="mt-10">
+          <AddressForm onSubmit={handle} pending={pending} />
+        </div>
 
-        {result && (
-          <pre className="mt-8 rounded-md bg-stone-900 p-4 text-stone-100 text-sm overflow-auto">
-            {JSON.stringify(result, null, 2)}
-          </pre>
+        {error && (
+          <div className="mt-8 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800">
+            {error}
+          </div>
         )}
+
+        {run && (
+          <div className="mt-12 space-y-6">
+            <HeroResult run={run} />
+            <MethodsCard run={run} />
+            <AerialCard run={run} />
+            {run.estimate && (
+              <>
+                <MeasurementBreakdownCard estimate={run.estimate} />
+                <EstimateCard estimate={run.estimate} />
+              </>
+            )}
+          </div>
+        )}
+
+        <footer className="mt-16 pt-8 border-t border-stone-200 text-sm text-stone-500">
+          Built for the JobNimbus AI Hackathon 2026 ·{' '}
+          <a href="https://github.com/Elenion88/roofquote" className="underline decoration-stone-300 hover:decoration-stone-700">
+            github.com/Elenion88/roofquote
+          </a>
+        </footer>
       </div>
     </main>
   );
