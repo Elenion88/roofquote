@@ -13,15 +13,13 @@ function median(xs: number[]): number {
 }
 
 /**
- * Ensemble combiner.
- *
- * Strategy:
- *  - If footprint_msbuildings produced a number, USE THAT as the spine.
- *    It's deterministic geometry × LLM-derived pitch — by far the most accurate path.
- *  - Otherwise fall back to the median of vision_direct results at z19+z20.
+ * Ensemble combiner — prefers methods in this order:
+ *  1. sam2_footprint (SAM 2 mask × Qwen pitch — local, no commercial measurement)
+ *  2. footprint_msbuildings (MS Open Buildings polygon × Claude pitch)
+ *  3. median(vision_direct opus z19, z20)  (fallback)
  */
 export function combineEnsemble(results: MethodResult[]): EnsembleResult {
-  // Spine path: footprint_msbuildings
+  // Tier 1: MS Buildings × multi-zoom pitch (calibrated, MAPE ~4%)
   const ms = results.find(
     (r) => r.method === 'footprint_msbuildings' && typeof r.totalSqft === 'number'
   );
@@ -33,7 +31,17 @@ export function combineEnsemble(results: MethodResult[]): EnsembleResult {
     };
   }
 
-  // Fallback path: vision_direct median(z19, z20)
+  // Tier 2: SAM 2 footprint × Qwen pitch (local, no APIs) — fallback when MS polygon missing
+  const sam = results.find((r) => r.method === 'sam2_footprint' && typeof r.totalSqft === 'number');
+  if (sam) {
+    return {
+      consensusSqft: Math.round(sam.totalSqft as number),
+      combiner: 'SAM 2 mask × Qwen pitch (local, no MS polygon)',
+      inputs: [{ method: sam.method, model: sam.model, sqft: sam.totalSqft }],
+    };
+  }
+
+  // Tier 3: vision_direct median
   const fallback = results.filter(
     (r) =>
       r.method === 'vision_direct:measured' &&

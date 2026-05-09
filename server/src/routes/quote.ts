@@ -2,12 +2,24 @@ import { Hono } from 'hono';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { runQuote } from '../pipeline/quote.ts';
+import { autocompleteAddress } from '../lib/places.ts';
 import { renderPolygonOverlay } from '../lib/overlay.ts';
 import { lookupPolygon } from '../lib/msbuildings.ts';
 import { fetchStaticMap, metersPerPixel } from '../lib/staticmap.ts';
 import { EVAL_RUNS_ROOT, slugify } from '../lib/artifacts.ts';
 
 export const quoteRoute = new Hono();
+
+quoteRoute.get('/autocomplete', async (c) => {
+  const q = c.req.query('q') ?? '';
+  if (q.trim().length < 3) return c.json({ suggestions: [] });
+  try {
+    const suggestions = await autocompleteAddress(q);
+    return c.json({ suggestions });
+  } catch (err: any) {
+    return c.json({ error: String(err?.message ?? err), suggestions: [] }, 500);
+  }
+});
 
 quoteRoute.post('/quote', async (c) => {
   const body = await c.req.json().catch(() => ({} as any));
@@ -45,11 +57,10 @@ quoteRoute.get('/tile/:slug/:zoom/overlay', async (c) => {
   const run = JSON.parse(readFileSync(runPath, 'utf8'));
   const png = readFileSync(path);
   const hit = lookupPolygon(run.location.lat, run.location.lng);
-  if (!hit) {
-    // No polygon — return base tile
-    return c.body(new Uint8Array(png), 200, { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=86400' });
-  }
   const mpp = metersPerPixel(run.location.lat, zoom, 2);
+  // SAM 2 polygons (pixel coords) when present
+  const samResult = (run.results || []).find((r) => r.method === "sam2_footprint");
+  const showSam = zoom === 21 && Number(samResult && samResult.imageWidth) === 1280;
   const overlay = await renderPolygonOverlay({
     basePngBytes: new Uint8Array(png),
     centerLat: run.location.lat,
@@ -57,7 +68,9 @@ quoteRoute.get('/tile/:slug/:zoom/overlay', async (c) => {
     metersPerPixel: mpp,
     imageWidthPx: 1280,
     imageHeightPx: 1280,
-    polygonLonLat: hit.polygonLonLat,
+    polygonLonLat: hit?.polygonLonLat,
+    sam2BuildingPixels: showSam ? samResult.buildingMaskPolygon : undefined,
+    sam2PlanePixels: showSam ? samResult.perPlanePolygons : undefined,
   });
   return c.body(new Uint8Array(overlay), 200, { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=86400' });
 });

@@ -3,6 +3,7 @@ import { fetchStaticMap } from '../lib/staticmap.ts';
 import { saveArtifact, slugify } from '../lib/artifacts.ts';
 import { visionDirect } from './methods/vision_direct.ts';
 import { footprintMSBuildings } from './methods/footprint_msbuildings.ts';
+import { sam2Footprint } from './methods/sam2_footprint.ts';
 import { lookupPolygon } from '../lib/msbuildings.ts';
 import { visionPolygon } from './methods/vision_polygon.ts';
 import { combineEnsemble } from './ensemble.ts';
@@ -11,6 +12,7 @@ import type { Estimate } from './estimate.ts';
 import type { MethodResult, QuoteRun } from './types.ts';
 
 const ZOOMS_FOR_CONSENSUS = [19, 20] as const;
+const ZOOMS_FOR_DISPLAY = [21] as const;
 const DEMO_MODELS = [
   // shown in UI but NOT used for consensus (per calibration: GPT-4o regresses to mean)
   { id: 'openai/gpt-4o', label: 'GPT-4o' },
@@ -32,6 +34,32 @@ export async function runQuote(address: string, opts: { withPolygon?: boolean; w
           saveArtifact(slug, `staticmap-z${zoom}.png`, Buffer.from(tile.pngBytes));
           return { zoom, tile };
         })
+    )
+  );
+  // SAM 2 segmentation method — uses z21 tile (highest detail).
+  // Tile is fetched independently (display tiles are async-saved, we need the bytes here).
+  const z21Promise = fetchStaticMap({ lat: location.lat, lng: location.lng, zoom: 21, size: 640, scale: 2 })
+    .then((tile) => {
+      saveArtifact(slug, `staticmap-z21.png`, Buffer.from(tile.pngBytes));
+      return tile;
+    });
+
+  const sam2Job = z21Promise.then((tile) =>
+    sam2Footprint({
+      pngBytes: tile.pngBytes,
+      lat: location.lat,
+      lng: location.lng,
+      zoom: 21,
+      scale: 2,
+      imageSizePx: tile.imageSize.width,
+    })
+  );
+
+  // Display-only tiles (z21) for the UI
+  await Promise.all(
+    ZOOMS_FOR_DISPLAY.map((zoom) =>
+      fetchStaticMap({ lat: location.lat, lng: location.lng, zoom, size: 640, scale: 2 })
+        .then((tile) => saveArtifact(slug, `staticmap-z${zoom}.png`, Buffer.from(tile.pngBytes)))
     )
   );
 
@@ -93,13 +121,14 @@ export async function runQuote(address: string, opts: { withPolygon?: boolean; w
     );
   }
 
-  const [consensus, demos, polys, ms] = await Promise.all([
+  const [consensus, demos, polys, ms, sam2] = await Promise.all([
     Promise.all(consensusJobs),
     Promise.all(demoJobs),
     Promise.all(polygonJobs),
     msbuildingsJob,
+    sam2Job,
   ]);
-  const results = [ms, ...consensus, ...demos, ...polys];
+  const results = [sam2, ms, ...consensus, ...demos, ...polys];
 
   for (const r of results) {
     saveArtifact(slug, `result-${r.method.replace(/[:/]/g, '_')}-${r.model?.replace(/[:/]/g, '_')}-z${r.zoom}.json`, r);

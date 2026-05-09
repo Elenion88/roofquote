@@ -6,17 +6,17 @@ export function AerialCard({ run }: { run: QuoteRun }) {
   const usedMS = run.results.some((r) => r.method === 'footprint_msbuildings' && r.totalSqft != null);
   return (
     <section className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
-      <h3 className="text-lg font-medium text-stone-900">Aerial imagery</h3>
+      <h3 className="text-lg font-semibold text-stone-900">Aerial imagery</h3>
       <p className="mt-1 text-sm text-stone-600">
         {usedMS
-          ? 'Top-down satellite tile with the Microsoft Buildings polygon (green) overlaid — exactly the footprint we measured.'
-          : 'Top-down satellite tiles fed to the vision model — same pixels, different zooms.'}
+          ? 'The green outline is the Microsoft Open Buildings polygon we measured. The pin marks the geocoded address.'
+          : 'The pin marks the geocoded address; aerial tiles fed to the vision model.'}
       </p>
       <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {[19, 20].map((z) => (
+        {[20, 21].map((z) => (
           <figure key={z} className="overflow-hidden rounded-xl border border-stone-200 bg-stone-50">
             <img
-              src={usedMS ? `/api/tile/${s}/${z}/overlay` : `/api/tile/${s}/${z}`}
+              src={`/api/tile/${s}/${z}/overlay`}
               alt={`zoom ${z}`}
               className="block w-full h-auto"
               loading="lazy"

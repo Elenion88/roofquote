@@ -12,3 +12,19 @@ export async function fetchQuote(address: string, opts: { withDemoModels?: boole
   }
   return r.json();
 }
+
+
+export type Suggestion = {
+  placeId: string;
+  text: string;
+  mainText: string;
+  secondaryText: string;
+};
+
+export async function fetchAutocomplete(query: string): Promise<Suggestion[]> {
+  if (!query || query.trim().length < 3) return [];
+  const r = await fetch(`/api/autocomplete?q=${encodeURIComponent(query)}`);
+  if (!r.ok) return [];
+  const d = (await r.json()) as { suggestions?: Suggestion[] };
+  return d.suggestions ?? [];
+}

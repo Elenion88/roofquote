@@ -8,6 +8,10 @@ export type MethodResult = {
   reasoning?: string;
   durationMs: number;
   errorMessage?: string;
+  buildingMaskPolygon?: number[][];
+  perPlanePolygons?: number[][][];
+  imageWidth?: number;
+  imageHeight?: number;
   raw?: unknown;
 };
 
