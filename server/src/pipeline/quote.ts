@@ -4,6 +4,8 @@ import { saveArtifact, slugify } from '../lib/artifacts.ts';
 import { visionDirect } from './methods/vision_direct.ts';
 import { visionPolygon } from './methods/vision_polygon.ts';
 import { combineEnsemble } from './ensemble.ts';
+import { generateEstimate, stateFromFormatted } from './estimate.ts';
+import type { Estimate } from './estimate.ts';
 import type { MethodResult, QuoteRun } from './types.ts';
 
 const ZOOMS_FOR_CONSENSUS = [19, 20] as const;
@@ -12,7 +14,7 @@ const DEMO_MODELS = [
   { id: 'openai/gpt-4o', label: 'GPT-4o' },
 ] as const;
 
-export async function runQuote(address: string, opts: { withPolygon?: boolean; withDemoModels?: boolean } = {}): Promise<QuoteRun> {
+export async function runQuote(address: string, opts: { withPolygon?: boolean; withDemoModels?: boolean; withEstimate?: boolean } = {}): Promise<QuoteRun> {
   const startedAt = new Date().toISOString();
   const slug = slugify(address);
 
@@ -92,6 +94,28 @@ export async function runQuote(address: string, opts: { withPolygon?: boolean; w
 
   const ens = combineEnsemble(results);
 
+  // ─ Generate estimate (only if we have a consensus number) ──────────────
+  let estimate: Estimate | null = null;
+  if (ens.consensusSqft && opts.withEstimate !== false) {
+    const repForPitch = consensus.find((r) => r.pitchRatio != null) ?? consensus[0];
+    const pitchRatio = repForPitch?.pitchRatio ?? 0.5;
+    const pitchRise = Math.round(pitchRatio * 12);
+    try {
+      estimate = await generateEstimate({
+        address,
+        formattedAddress: formatted,
+        totalSqft: ens.consensusSqft,
+        footprintSqft: repForPitch?.footprintSqft ?? Math.round(ens.consensusSqft / Math.sqrt(1 + pitchRatio ** 2)),
+        pitch: `${pitchRise}:12`,
+        pitchRatio,
+        state: stateFromFormatted(formatted),
+      });
+      saveArtifact(slug, 'estimate.json', estimate);
+    } catch (err: any) {
+      console.error('estimate failed:', err?.message);
+    }
+  }
+
   const run: QuoteRun = {
     address,
     formattedAddress: formatted,
@@ -102,6 +126,7 @@ export async function runQuote(address: string, opts: { withPolygon?: boolean; w
     startedAt,
     finishedAt: new Date().toISOString(),
   };
+  (run as any).estimate = estimate;
   saveArtifact(slug, 'run.json', run);
-  return run;
+  return run as any;
 }
