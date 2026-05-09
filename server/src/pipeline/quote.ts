@@ -37,9 +37,11 @@ export async function runQuote(address: string, opts: { withPolygon?: boolean; w
 
   // ─ Run vision_direct (opus, measured) at each zoom in parallel ──────────
   // Try MS Buildings primary path (deterministic footprint + vision pitch)
+  const z19Tile = tiles.find((t) => t.zoom === 19)!.tile;
   const z20Tile = tiles.find((t) => t.zoom === 20)!.tile;
   const msbuildingsJob = footprintMSBuildings({
-    pngBytes: z20Tile.pngBytes,
+    z19PngBytes: z19Tile.pngBytes,
+    z20PngBytes: z20Tile.pngBytes,
     lat: location.lat,
     lng: location.lng,
   });

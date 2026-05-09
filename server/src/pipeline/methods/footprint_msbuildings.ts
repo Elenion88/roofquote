@@ -4,36 +4,69 @@ import { lookupPolygon } from '../../lib/msbuildings.ts';
 import { pitchMultiplier } from '../../lib/geometry.ts';
 import type { MethodResult } from '../types.ts';
 
-const PITCH_PROMPT = (p: { lat: number; lng: number }) => `
-You are looking at a top-down satellite tile of a residential property at lat=${p.lat}, lng=${p.lng}.
+const PITCH_PROMPT = (p: { lat: number; lng: number; state?: string; zoom: number }) => `
+Top-down satellite tile of a residential property at lat=${p.lat}, lng=${p.lng}. Zoom ${p.zoom}.
 
-Your only task: estimate the dominant roof pitch of the central dwelling as rise:12.
+Estimate the dominant roof pitch of the central dwelling as rise:12.
 
-Common values:
-- 3:12 = nearly flat (modern, southwestern)
-- 4:12 = walkable low slope
-- 6:12 = standard residential (most common nationally)
-- 8:12 = steep (snowy regions, newer construction)
-- 10:12 = very steep (Victorian, mountain)
-- 12:12 = extremely steep (rare residential)
+Common pitches by region:
+- Southern/southwestern US (TX, FL, AZ, CA, GA): often 4:12 to 6:12 (low to standard)
+- Midwestern US (IL, MO, IN, OH): typically 6:12 (standard)
+- Western mountain (CO, UT, NM, WY): typically 6:12 to 8:12 (steeper for snow)
+- Northeastern US (NY, MA, NH, VT, ME): 8:12 to 12:12 (steep for snow)
 
-Use shadows, ridge sharpness, and the appearance of slopes to infer.
+Use shadows, ridge sharpness, and the appearance of slopes to infer the actual pitch.
+- Sharp ridges with strong shadow lines = steep (8:12+)
+- Soft, almost-flat appearance = low (3:12-4:12)
+- Moderate shadow with visible slope = standard (6:12)
 
 Return ONLY JSON:
 {
   "pitch": "<rise:12 e.g. '6:12'>",
+  "confidence": "low" | "medium" | "high",
   "reasoning": "<one sentence>"
 }
 `.trim();
 
+async function detectPitch(args: {
+  pngBytes: Uint8Array;
+  lat: number;
+  lng: number;
+  zoom: number;
+  model: string;
+}): Promise<{ rise: number; confidence: string; reasoning: string }> {
+  const r = await openrouterChat({
+    model: args.model,
+    temperature: 0,
+    max_tokens: 200,
+    response_format: { type: 'json_object' },
+    messages: [
+      { role: 'system', content: 'You are a roofing measurement expert. Return ONLY valid JSON.' },
+      {
+        role: 'user',
+        content: [
+          { type: 'text', text: PITCH_PROMPT(args) },
+          { type: 'image_url', image_url: { url: pngToDataUrl(args.pngBytes), detail: 'high' } },
+        ],
+      },
+    ],
+  });
+  const text = r.choices[0]?.message?.content ?? '';
+  const json = extractJson<{ pitch: string; confidence: string; reasoning: string }>(text);
+  const pm = String(json.pitch ?? '6:12').match(/^(\d+):12$/);
+  const rise = pm ? parseInt(pm[1], 10) : 6;
+  return { rise, confidence: json.confidence ?? 'medium', reasoning: json.reasoning ?? '' };
+}
+
 /**
  * Footprint-based measurement.
  *  - Footprint polygon comes from Microsoft Open Buildings (deterministic).
- *  - Pitch comes from a vision LLM (the only noisy variable).
+ *  - Pitch is the median of vision-LLM detections across two zooms (z19 + z20).
  *  - Roof area = footprint × pitch_multiplier.
  */
 export async function footprintMSBuildings(args: {
-  pngBytes: Uint8Array;
+  z19PngBytes: Uint8Array;
+  z20PngBytes: Uint8Array;
   lat: number;
   lng: number;
   model?: string;
@@ -53,33 +86,31 @@ export async function footprintMSBuildings(args: {
     };
   }
 
-  // Pitch detection from satellite tile
+  // Multi-zoom pitch detection (parallel)
   let pitchRise = 6;
   let pitchReason = 'default 6:12';
   try {
-    const r = await openrouterChat({
-      model,
-      temperature: 0,
-      max_tokens: 200,
-      response_format: { type: 'json_object' },
-      messages: [
-        { role: 'system', content: 'You are a roofing measurement expert. Return ONLY valid JSON.' },
-        {
-          role: 'user',
-          content: [
-            { type: 'text', text: PITCH_PROMPT(args) },
-            { type: 'image_url', image_url: { url: pngToDataUrl(args.pngBytes), detail: 'high' } },
-          ],
-        },
-      ],
-    });
-    const text = r.choices[0]?.message?.content ?? '';
-    const json = extractJson<{ pitch: string; reasoning: string }>(text);
-    const pm = String(json.pitch ?? '6:12').match(/^(\d+):12$/);
-    if (pm) pitchRise = parseInt(pm[1], 10);
-    pitchReason = json.reasoning ?? '';
+    const [p19, p20] = await Promise.all([
+      detectPitch({ pngBytes: args.z19PngBytes, lat: args.lat, lng: args.lng, zoom: 19, model }),
+      detectPitch({ pngBytes: args.z20PngBytes, lat: args.lat, lng: args.lng, zoom: 20, model }),
+    ]);
+    // Median (round half up): if z19 and z20 disagree, take the higher-confidence one
+    if (p19.rise === p20.rise) {
+      pitchRise = p19.rise;
+    } else {
+      // If different, prefer the higher-confidence reading; if equal, take median
+      const order = { high: 3, medium: 2, low: 1 } as const;
+      if ((order[p19.confidence as keyof typeof order] ?? 2) > (order[p20.confidence as keyof typeof order] ?? 2)) {
+        pitchRise = p19.rise;
+      } else if ((order[p19.confidence as keyof typeof order] ?? 2) < (order[p20.confidence as keyof typeof order] ?? 2)) {
+        pitchRise = p20.rise;
+      } else {
+        // average and round
+        pitchRise = Math.round((p19.rise + p20.rise) / 2);
+      }
+    }
+    pitchReason = `z19→${p19.rise}:12 (${p19.confidence}); z20→${p20.rise}:12 (${p20.confidence}); chose ${pitchRise}:12. ${p20.reasoning}`;
   } catch (err: any) {
-    // Fall through with default pitch
     pitchReason = `pitch detection error: ${err?.message ?? err}`;
   }
 
@@ -92,7 +123,7 @@ export async function footprintMSBuildings(args: {
     totalSqft,
     footprintSqft: Math.round(hit.footprintSqft),
     pitchRatio: pitchRise / 12,
-    reasoning: `Microsoft Open Buildings polygon (${hit.footprintM2.toFixed(0)} m² footprint, ${hit.centroidDistM.toFixed(1)} m from address) × pitch multiplier ${mult.toFixed(3)} (${pitchRise}:12). ${pitchReason}`,
+    reasoning: `Microsoft Open Buildings polygon (${hit.footprintM2.toFixed(0)} m² footprint, ${hit.centroidDistM.toFixed(1)} m from address) × pitch ${pitchRise}:12 multiplier ${mult.toFixed(3)}. ${pitchReason}`,
     durationMs: Date.now() - start,
     raw: { hit, pitchRise, pitchReason },
   };
