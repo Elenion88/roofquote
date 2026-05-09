@@ -13,16 +13,46 @@ function median(xs: number[]): number {
 }
 
 /**
- * Ensemble combiner — prefers methods in this order:
- *  1. sam2_footprint (SAM 2 mask × Qwen pitch — local, no commercial measurement)
- *  2. footprint_msbuildings (MS Open Buildings polygon × Claude pitch)
- *  3. median(vision_direct opus z19, z20)  (fallback)
+ * Ensemble combiner — preference order with courtyard-detection override:
+ *
+ *  - If SAM 2 found ≥3 planes covering meaningfully less than the MS polygon
+ *    (≥10% smaller), the MS polygon is overcounting (courtyard/patio inside
+ *    the polygon outline). Prefer SAM 2's plane-summed footprint.
+ *  - Else prefer footprint_msbuildings (calibrated, MAPE ~5–6%).
+ *  - Else fall back to sam2_footprint (when no MS polygon available).
+ *  - Else median(vision_direct opus z19, z20).
  */
 export function combineEnsemble(results: MethodResult[]): EnsembleResult {
-  // Tier 1: MS Buildings × multi-zoom pitch (calibrated, MAPE ~4%)
   const ms = results.find(
     (r) => r.method === 'footprint_msbuildings' && typeof r.totalSqft === 'number'
   );
+  const sam = results.find(
+    (r) => r.method === 'sam2_footprint' && typeof r.totalSqft === 'number'
+  ) as any;
+
+  // Courtyard-detection override: SAM 2 plane-summed footprint shrinks vs MS.
+  // Conservative trigger: SAM 2 plane sum is 70-90% of MS polygon
+  // (suggests a real ~20% courtyard, not just SAM missing planes).
+  // Below 70% we don't trust the segmentation; above 90% MS is fine as-is.
+  if (
+    ms &&
+    sam &&
+    sam.aggregation === 'planes' &&
+    typeof sam.footprintSqft === 'number' &&
+    typeof (ms as any).footprintSqft === 'number' &&
+    sam.footprintSqft <= 0.9 * (ms as any).footprintSqft &&
+    sam.footprintSqft >= 0.7 * (ms as any).footprintSqft
+  ) {
+    return {
+      consensusSqft: Math.round(sam.totalSqft as number),
+      combiner: 'SAM 2 per-plane (MS polygon includes courtyard)',
+      inputs: [
+        { method: sam.method, model: sam.model, sqft: sam.totalSqft },
+        { method: ms.method, model: ms.model, sqft: ms.totalSqft },
+      ],
+    };
+  }
+
   if (ms) {
     return {
       consensusSqft: Math.round(ms.totalSqft as number),
@@ -31,8 +61,6 @@ export function combineEnsemble(results: MethodResult[]): EnsembleResult {
     };
   }
 
-  // Tier 2: SAM 2 footprint × Qwen pitch (local, no APIs) — fallback when MS polygon missing
-  const sam = results.find((r) => r.method === 'sam2_footprint' && typeof r.totalSqft === 'number');
   if (sam) {
     return {
       consensusSqft: Math.round(sam.totalSqft as number),
@@ -41,7 +69,6 @@ export function combineEnsemble(results: MethodResult[]): EnsembleResult {
     };
   }
 
-  // Tier 3: vision_direct median
   const fallback = results.filter(
     (r) =>
       r.method === 'vision_direct:measured' &&

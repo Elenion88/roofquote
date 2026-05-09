@@ -5,6 +5,7 @@ export type SegmentPlane = {
   area_px: number;
   bbox: [number, number, number, number];
   score: number;
+  centroid?: [number, number];
 };
 
 export type SegmentResponse = {
@@ -57,6 +58,27 @@ export async function cachyPitch(pngBytes: Uint8Array): Promise<PitchResponse> {
   });
   if (!r.ok) throw new Error(`/pitch ${r.status}: ${await r.text()}`);
   return (await r.json()) as PitchResponse;
+}
+
+export type PerPlanePitchItem = {
+  pitch: string;
+  angleDegrees: number;
+  confidence: string;
+  reasoning: string;
+};
+
+export async function cachyPerPlanePitch(
+  pngBytes: Uint8Array,
+  bboxes: number[][],
+): Promise<{ pitches: PerPlanePitchItem[]; elapsedMs: number }> {
+  const imageB64 = Buffer.from(pngBytes).toString('base64');
+  const r = await fetch(`${BASE}/per-plane-pitch`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ imageB64, bboxes }),
+  });
+  if (!r.ok) throw new Error(`/per-plane-pitch ${r.status}: ${await r.text()}`);
+  return (await r.json()) as { pitches: PerPlanePitchItem[]; elapsedMs: number };
 }
 
 export async function cachyHealth(): Promise<{ ok: boolean; vram_used_mb?: number }> {

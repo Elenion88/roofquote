@@ -10,17 +10,21 @@ export type SAM2FootprintResult = MethodResult & {
   perPlanePolygons?: number[][][];
   imageWidth?: number;
   imageHeight?: number;
+  planeCoverage?: number;
+  aggregation?: 'planes' | 'building';
 };
 
 /**
- * SAM 2 segmentation × Qwen2.5-VL pitch. Local on cachy-tower (no API).
+ * SAM 2 segmentation × Qwen2.5-VL global pitch (LOCAL on cachy-tower).
  *
- * Prompt strategy (in order of preference):
- *  1. BOX prompt from MS Buildings polygon — most reliable. SAM 2 segments the
- *     building constrained by the polygon's bbox, refining away patio/courtyards.
- *  2. Multiple click points (image center + 4 cardinal mid-points) when no MS
- *     polygon is available — captures multi-section buildings better than single click.
- *  3. Single center click — last resort fallback.
+ *   1. Box prompt from MS Buildings polygon → SAM 2 building mask.
+ *   2. Automatic mask gen → per-plane polygons.
+ *   3. effective_footprint = max of:
+ *        - plane_sum (capped at building area) — when planes have ≥40% coverage
+ *        - building mask                       — when plane coverage is low
+ *      Per-plane segmentation natively excludes courtyards/patios because
+ *      there's no roof to detect inside an open courtyard.
+ *   4. Multiply by global pitch via Qwen2.5-VL on full tile.
  */
 export async function sam2Footprint(args: {
   pngBytes: Uint8Array;
@@ -38,34 +42,21 @@ export async function sam2Footprint(args: {
 
     let segOpts: Parameters<typeof cachySegment>[1] = { perPlane: true };
     if (hit && hit.polygonLonLat.length >= 3) {
-      // Project MS polygon to pixel space and compute bbox
       const pixelPts = lonLatToTilePixels(
-        hit.polygonLonLat,
-        args.lat,
-        args.lng,
-        mpp,
-        imgPx,
-        imgPx,
+        hit.polygonLonLat, args.lat, args.lng, mpp, imgPx, imgPx,
       );
       const xs = pixelPts.map((p) => p[0]);
       const ys = pixelPts.map((p) => p[1]);
-      const x1 = Math.max(0, Math.min(...xs) - 8); // small padding
+      const x1 = Math.max(0, Math.min(...xs) - 8);
       const y1 = Math.max(0, Math.min(...ys) - 8);
       const x2 = Math.min(imgPx, Math.max(...xs) + 8);
       const y2 = Math.min(imgPx, Math.max(...ys) + 8);
       segOpts = { box: [x1, y1, x2, y2], perPlane: true };
     } else {
-      // No MS polygon — use multi-click strategy at image center + 4 inset points
       const c = imgPx / 2;
-      const off = imgPx * 0.18; // 18% inset
+      const off = imgPx * 0.18;
       segOpts = {
-        clickPoints: [
-          [c, c],
-          [c - off, c],
-          [c + off, c],
-          [c, c - off],
-          [c, c + off],
-        ],
+        clickPoints: [[c, c], [c - off, c], [c + off, c], [c, c - off], [c, c + off]],
         perPlane: true,
       };
     }
@@ -75,31 +66,46 @@ export async function sam2Footprint(args: {
       cachyPitch(args.pngBytes),
     ]);
 
-    const buildingAreaM2 = seg.building.area_px * mpp * mpp;
+    const buildingPxArea = seg.building.area_px;
+    const planePxSum = seg.planes.reduce((acc, p) => acc + p.area_px, 0);
+    const planePxCapped = Math.min(planePxSum, buildingPxArea);
+    const planeCoverage = buildingPxArea > 0 ? planePxCapped / buildingPxArea : 0;
+
+    const buildingAreaM2 = buildingPxArea * mpp * mpp;
     const buildingFootprintSqft = buildingAreaM2 * M2_TO_SQFT;
+    const planeAreaM2 = planePxCapped * mpp * mpp;
+    const planeFootprintSqft = planeAreaM2 * M2_TO_SQFT;
+
+    // Use plane sum (excludes courtyards) when planes have ≥40% coverage AND ≥3 planes;
+    // otherwise SAM 2 missed too much and we trust the building mask instead.
+    const usePlanes = planeCoverage >= 0.4 && seg.planes.length >= 3;
+    const effectiveFootprintSqft = usePlanes ? planeFootprintSqft : buildingFootprintSqft;
+    const aggregation: 'planes' | 'building' = usePlanes ? 'planes' : 'building';
 
     const pm = pitch.pitch.match(/^(\d+):12$/);
     const pitchRise = pm ? parseInt(pm[1], 10) : 6;
     const mult = pitchMultiplier(pitchRise);
-    const totalSqft = Math.round(buildingFootprintSqft * mult);
+    const totalSqft = Math.round(effectiveFootprintSqft * mult);
 
     return {
       method: 'sam2_footprint',
       model: 'sam2.1-hiera-large + qwen2.5vl:7b',
       totalSqft,
-      footprintSqft: Math.round(buildingFootprintSqft),
+      footprintSqft: Math.round(effectiveFootprintSqft),
       pitchRatio: pitchRise / 12,
       reasoning:
-        `SAM 2 mask via ${seg.promptKind} prompt: ${seg.building.area_px} px (${(seg.building.score * 100).toFixed(0)}% conf) ` +
-        `→ ${buildingAreaM2.toFixed(0)} m² → ${buildingFootprintSqft.toFixed(0)} sqft footprint. ` +
-        `Qwen2.5-VL pitch: ${pitch.pitch} (${pitch.confidence}, ${pitch.angleDegrees.toFixed(0)}°). ` +
-        `${seg.planes.length} per-plane segments. ${pitch.reasoning}`,
+        `SAM 2 (${seg.promptKind}): building mask ${buildingFootprintSqft.toFixed(0)} sqft, ` +
+        `${seg.planes.length} planes summed to ${planeFootprintSqft.toFixed(0)} sqft (${(planeCoverage * 100).toFixed(0)}% of building). ` +
+        `Using ${aggregation} mode → ${effectiveFootprintSqft.toFixed(0)} sqft footprint × pitch ${pitchRise}:12 (×${mult.toFixed(3)}). ` +
+        `Pitch reasoning: ${pitch.reasoning}`,
       durationMs: Date.now() - start,
       buildingMaskPolygon: seg.building.polygon,
       perPlanePolygons: seg.planes.map((p) => p.polygon),
       imageWidth: seg.width,
       imageHeight: seg.height,
-      raw: { seg, pitch, segOpts },
+      planeCoverage,
+      aggregation,
+      raw: { seg, pitch, segOpts, mpp, planePxCapped, planePxSum, buildingPxArea },
     };
   } catch (err: any) {
     return {
