@@ -1,0 +1,524 @@
+[
+  {
+    "id": "ex-humble-tx",
+    "address": "21106 Kenswick Meadows Ct, Humble, TX 77338",
+    "refA": 2443,
+    "refB": 2343,
+    "kind": "example",
+    "lat": 30.019412,
+    "lng": -95.311886,
+    "formatted": "21106 Kenswick Meadows Ct, Humble, TX 77338, USA",
+    "solarOracle": {
+      "areaMeters2": 221.9302,
+      "areaSqft": 2388.8,
+      "segments": 8,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "ex-spring-tx",
+    "address": "5914 Copper Lilly Lane, Spring, TX 77389",
+    "refA": 4391,
+    "refB": 4296,
+    "kind": "example",
+    "lat": 30.1116839,
+    "lng": -95.50907149999999,
+    "formatted": "5914 Copper Lily, Spring, TX 77389, USA",
+    "solarOracle": {
+      "areaMeters2": 405.87677,
+      "areaSqft": 4368.8,
+      "segments": 20,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "ex-cape-coral-fl",
+    "address": "122 NW 13th Ave, Cape Coral, FL 33993",
+    "refA": 2917,
+    "refB": 2851,
+    "kind": "example",
+    "lat": 26.6551943,
+    "lng": -82.0006137,
+    "formatted": "122 NW 13th Ave, Cape Coral, FL 33993, USA",
+    "solarOracle": {
+      "areaMeters2": 271.6339,
+      "areaSqft": 2923.8,
+      "segments": 6,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "ex-orland-park-il",
+    "address": "14132 Trenton Ave, Orland Park, IL 60462",
+    "refA": 2990,
+    "refB": 2935,
+    "kind": "example",
+    "lat": 41.63322670000001,
+    "lng": -87.8431279,
+    "formatted": "14132 Trenton Ave, Orland Park, IL 60462, USA",
+    "solarOracle": {
+      "areaMeters2": 294.4695,
+      "areaSqft": 3169.6,
+      "segments": 12,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "ex-nixa-mo",
+    "address": "835 S Cobble Creek, Nixa, MO 65714",
+    "refA": 3070,
+    "refB": 3017,
+    "kind": "example",
+    "lat": 37.028963,
+    "lng": -93.2833319,
+    "formatted": "835 S Cobble Creek Blvd, Nixa, MO 65714, USA",
+    "solarOracle": {
+      "areaMeters2": 285.1875,
+      "areaSqft": 3069.7,
+      "segments": 13,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "test-thornton-co",
+    "address": "3561 E 102nd Ct, Thornton, CO 80229",
+    "kind": "test",
+    "lat": 39.8811632,
+    "lng": -104.9453839,
+    "formatted": "3561 E 102nd Ct, Thornton, CO 80229, USA",
+    "solarOracle": {
+      "areaMeters2": 193.3134,
+      "areaSqft": 2080.8,
+      "segments": 9,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "test-springfield-mo-1",
+    "address": "1612 S Canton Ave, Springfield, MO 65802",
+    "kind": "test",
+    "lat": 37.1860933,
+    "lng": -93.36959139999999,
+    "formatted": "1612 S Canton Ave, Springfield, MO 65802, USA",
+    "solarOracle": {
+      "areaMeters2": 256.112,
+      "areaSqft": 2756.8,
+      "segments": 10,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "test-houston-tx",
+    "address": "6310 Laguna Bay Court, Houston, TX 77041",
+    "kind": "test",
+    "lat": 29.8603157,
+    "lng": -95.59039589999999,
+    "formatted": "6310 Laguna Bay Ct, Houston, TX 77041, USA",
+    "solarOracle": {
+      "areaMeters2": 388.91318,
+      "areaSqft": 4186.2,
+      "segments": 20,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "test-springfield-mo-2",
+    "address": "3820 E Rosebrier St, Springfield, MO 65809",
+    "kind": "test",
+    "lat": 37.1596926,
+    "lng": -93.21594809999999,
+    "formatted": "3820 E Rosebrier St, Springfield, MO 65809, USA",
+    "solarOracle": {
+      "areaMeters2": 517.1039,
+      "areaSqft": 5566.1,
+      "segments": 18,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "test-newport-news-va",
+    "address": "1261 20th Street, Newport News, VA 23607",
+    "kind": "test",
+    "lat": 36.9845554,
+    "lng": -76.4016532,
+    "formatted": "1261 20th St, Newport News, VA 23607, USA",
+    "solarOracle": {
+      "areaMeters2": 568.36505,
+      "areaSqft": 6117.8,
+      "segments": 6,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-humble-tx-1",
+    "address": "7410 Deloache Ave, Humble, TX 77338, USA",
+    "lat": 30.01929768658591,
+    "lng": -95.31105342850034,
+    "formatted": "7410 Deloache Ave, Humble, TX 77338, USA",
+    "kind": "neighbor",
+    "parentId": "ex-humble-tx",
+    "solarOracle": {
+      "areaMeters2": 133.29276,
+      "areaSqft": 1434.7,
+      "segments": 8,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-spring-tx-0",
+    "address": "23929 Inway Oaks Dr, Spring, TX 77389, USA",
+    "lat": 30.11160461806504,
+    "lng": -95.51014709057308,
+    "formatted": "23929 Inway Oaks Dr, Spring, TX 77389, USA",
+    "kind": "neighbor",
+    "parentId": "ex-spring-tx",
+    "solarOracle": {
+      "areaMeters2": 772.9225,
+      "areaSqft": 8319.7,
+      "segments": 16,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-spring-tx-1",
+    "address": "24023 Willow Rose Dr, Spring, TX 77389, USA",
+    "lat": 30.112204867174476,
+    "lng": -95.50955597917823,
+    "formatted": "24023 Willow Rose Dr, Spring, TX 77389, USA",
+    "kind": "neighbor",
+    "parentId": "ex-spring-tx",
+    "solarOracle": {
+      "areaMeters2": 412.1601,
+      "areaSqft": 4436.5,
+      "segments": 18,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-cape-coral-fl-0",
+    "address": "110 NW 13th Ave, Cape Coral, FL 33993, USA",
+    "lat": 26.65462720272737,
+    "lng": -82.00027477448754,
+    "formatted": "110 NW 13th Ave, Cape Coral, FL 33993, USA",
+    "kind": "neighbor",
+    "parentId": "ex-cape-coral-fl",
+    "solarOracle": {
+      "areaMeters2": 257.68225,
+      "areaSqft": 2773.7,
+      "segments": 9,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-cape-coral-fl-1",
+    "address": "126 NW 12th Pl, Cape Coral, FL 33993, USA",
+    "lat": 26.655362037709978,
+    "lng": -81.99967360587479,
+    "formatted": "126 NW 12th Pl, Cape Coral, FL 33993, USA",
+    "kind": "neighbor",
+    "parentId": "ex-cape-coral-fl",
+    "solarOracle": {
+      "areaMeters2": 280.28906,
+      "areaSqft": 3017.0,
+      "segments": 10,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-orland-park-il-0",
+    "address": "14108 Concord Dr, Orland Park, IL 60462, USA",
+    "lat": 41.63393566490666,
+    "lng": -87.84296826446003,
+    "formatted": "14108 Concord Dr, Orland Park, IL 60462, USA",
+    "kind": "neighbor",
+    "parentId": "ex-orland-park-il",
+    "solarOracle": {
+      "areaMeters2": 301.9467,
+      "areaSqft": 3250.1,
+      "segments": 18,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-orland-park-il-1",
+    "address": "14148 Yorktown Dr, Orland Park, IL 60462, USA",
+    "lat": 41.63271213060295,
+    "lng": -87.84407404852548,
+    "formatted": "14148 Yorktown Dr, Orland Park, IL 60462, USA",
+    "kind": "neighbor",
+    "parentId": "ex-orland-park-il",
+    "solarOracle": {
+      "areaMeters2": 285.942,
+      "areaSqft": 3077.9,
+      "segments": 11,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-nixa-mo-0",
+    "address": "835 S Eastridge, Nixa, MO 65714, USA",
+    "lat": 37.029128178419576,
+    "lng": -93.28223071352589,
+    "formatted": "835 S Eastridge, Nixa, MO 65714, USA",
+    "kind": "neighbor",
+    "parentId": "ex-nixa-mo",
+    "solarOracle": {
+      "areaMeters2": 329.2031,
+      "areaSqft": 3543.5,
+      "segments": 10,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-nixa-mo-1",
+    "address": "707 E Mining Camp Rd, Nixa, MO 65714, USA",
+    "lat": 37.02919371360654,
+    "lng": -93.28406951877314,
+    "formatted": "707 E Mining Camp Rd, Nixa, MO 65714, USA",
+    "kind": "neighbor",
+    "parentId": "ex-nixa-mo",
+    "solarOracle": {
+      "areaMeters2": 338.1006,
+      "areaSqft": 3639.3,
+      "segments": 12,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-thornton-co-0",
+    "address": "3280 E 102nd Dr, Thornton, CO 80229, USA",
+    "lat": 39.881487347707335,
+    "lng": -104.94653850757327,
+    "formatted": "3280 E 102nd Dr, Thornton, CO 80229, USA",
+    "kind": "neighbor",
+    "parentId": "test-thornton-co",
+    "solarOracle": {
+      "areaMeters2": 492.30103,
+      "areaSqft": 5299.1,
+      "segments": 18,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-thornton-co-1",
+    "address": "3661 E 102nd Ct, Thornton, CO 80229, USA",
+    "lat": 39.88078749319817,
+    "lng": -104.94461509236545,
+    "formatted": "3661 E 102nd Ct, Thornton, CO 80229, USA",
+    "kind": "neighbor",
+    "parentId": "test-thornton-co",
+    "solarOracle": {
+      "areaMeters2": 240.35191,
+      "areaSqft": 2587.1,
+      "segments": 5,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-springfield-mo-1-0",
+    "address": "4371 W Farm Rd 146, Springfield, MO 65802, USA",
+    "lat": 37.186846129447744,
+    "lng": -93.3698517444518,
+    "formatted": "4371 W Farm Rd 146, Springfield, MO 65802, USA",
+    "kind": "neighbor",
+    "parentId": "test-springfield-mo-1",
+    "solarOracle": {
+      "areaMeters2": 93.66147,
+      "areaSqft": 1008.2,
+      "segments": 4,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-springfield-mo-1-1",
+    "address": "1502 S Canton Ave, Springfield, MO 65802, USA",
+    "lat": 37.186655239199794,
+    "lng": -93.36912650764761,
+    "formatted": "1502 S Canton Ave, Springfield, MO 65802, USA",
+    "kind": "neighbor",
+    "parentId": "test-springfield-mo-1",
+    "solarOracle": {
+      "areaMeters2": 261.24905,
+      "areaSqft": 2812.1,
+      "segments": 8,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-houston-tx-0",
+    "address": "6319 Laguna Bay Ct, Houston, TX 77041, USA",
+    "lat": 29.86083375194593,
+    "lng": -95.5912459153259,
+    "formatted": "6319 Laguna Bay Ct, Houston, TX 77041, USA",
+    "kind": "neighbor",
+    "parentId": "test-houston-tx",
+    "solarOracle": {
+      "areaMeters2": 512.1744,
+      "areaSqft": 5513.0,
+      "segments": 9,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-houston-tx-1",
+    "address": "6315 Laguna Bay Ct, Houston, TX 77041, USA",
+    "lat": 29.86065211436769,
+    "lng": -95.59142977845785,
+    "formatted": "6315 Laguna Bay Ct, Houston, TX 77041, USA",
+    "kind": "neighbor",
+    "parentId": "test-houston-tx",
+    "solarOracle": {
+      "areaMeters2": 397.29263,
+      "areaSqft": 4276.4,
+      "segments": 11,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-springfield-mo-2-0",
+    "address": "2940 S Camber Ave, Springfield, MO 65804, USA",
+    "lat": 37.15865302920646,
+    "lng": -93.21625026106217,
+    "formatted": "2940 S Camber Ave, Springfield, MO 65804, USA",
+    "kind": "neighbor",
+    "parentId": "test-springfield-mo-2",
+    "solarOracle": {
+      "areaMeters2": 531.5332,
+      "areaSqft": 5721.4,
+      "segments": 19,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-springfield-mo-2-1",
+    "address": "3916 E Ridgeview St, Springfield, MO 65809, USA",
+    "lat": 37.159058303587955,
+    "lng": -93.21518678708391,
+    "formatted": "3916 E Ridgeview St, Springfield, MO 65809, USA",
+    "kind": "neighbor",
+    "parentId": "test-springfield-mo-2",
+    "solarOracle": {
+      "areaMeters2": 426.35324,
+      "areaSqft": 4589.2,
+      "segments": 17,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-newport-news-va-0",
+    "address": "1245 21st St, Newport News, VA 23607, USA",
+    "lat": 36.984989685092025,
+    "lng": -76.40265096091426,
+    "formatted": "1245 21st St, Newport News, VA 23607, USA",
+    "kind": "neighbor",
+    "parentId": "test-newport-news-va",
+    "solarOracle": {
+      "areaMeters2": 101.93025,
+      "areaSqft": 1097.2,
+      "segments": 2,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  },
+  {
+    "id": "nb-newport-news-va-1",
+    "address": "1251 21st St, Newport News, VA 23607, USA",
+    "lat": 36.985129472458425,
+    "lng": -76.40250319591115,
+    "formatted": "1251 21st St, Newport News, VA 23607, USA",
+    "kind": "neighbor",
+    "parentId": "test-newport-news-va",
+    "solarOracle": {
+      "areaMeters2": 102.09824,
+      "areaSqft": 1099.0,
+      "segments": 2,
+      "imageryQuality": null,
+      "imageryDate": null,
+      "centerLat": null,
+      "centerLng": null
+    }
+  }
+]
