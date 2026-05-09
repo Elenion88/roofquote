@@ -1,6 +1,7 @@
 import { serve } from '@hono/node-server';
 import { serveStatic } from '@hono/node-server/serve-static';
 import { Hono } from 'hono';
+import { quoteRoute } from './routes/quote.ts';
 import { cors } from 'hono/cors';
 import { logger } from 'hono/logger';
 import { existsSync } from 'node:fs';
@@ -19,6 +20,8 @@ app.use(
     credentials: true,
   })
 );
+
+app.route('/api', quoteRoute);
 
 app.get('/api/health', (c) =>
   c.json({ ok: true, app: 'roofquote', time: new Date().toISOString() })
