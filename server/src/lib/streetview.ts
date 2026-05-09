@@ -74,8 +74,8 @@ export async function fetchStreetViewFacing(args: {
   url.searchParams.set('size', `${size}x${size}`);
   url.searchParams.set('location', `${meta.location.lat},${meta.location.lng}`);
   url.searchParams.set('heading', String(heading));
-  url.searchParams.set('pitch', String(args.cameraPitch ?? 10));
-  url.searchParams.set('fov', String(args.fov ?? 80));
+  url.searchParams.set('pitch', String(args.cameraPitch ?? 0));
+  url.searchParams.set('fov', String(args.fov ?? 50));
   url.searchParams.set('source', 'outdoor');
   url.searchParams.set('key', env.GOOGLE_PLACES_API_KEY);
   const r = await fetch(url);
@@ -86,8 +86,8 @@ export async function fetchStreetViewFacing(args: {
     panoLat: meta.location.lat,
     panoLng: meta.location.lng,
     heading,
-    fov: args.fov ?? 80,
-    pitch: args.cameraPitch ?? 10,
+    fov: args.fov ?? 50,
+    pitch: args.cameraPitch ?? 0,
     imageryDate: meta.date,
     panoDistanceM: panoDistance,
   };

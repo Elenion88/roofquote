@@ -3,8 +3,8 @@
     "kind": "test",
     "address": "3561 E 102nd Ct, Thornton, CO 80229",
     "consensusSqft": 1893,
-    "elapsed_s": 31.3370418548584,
-    "estimate_total": 9651.91,
+    "elapsed_s": 47.261027336120605,
+    "estimate_total": 9533.02,
     "refA": null,
     "refB": null,
     "oracle": 2081
@@ -13,8 +13,8 @@
     "kind": "test",
     "address": "1612 S Canton Ave, Springfield, MO 65802",
     "consensusSqft": 2561,
-    "elapsed_s": 29.66685438156128,
-    "estimate_total": 10886.67,
+    "elapsed_s": 37.104257345199585,
+    "estimate_total": 11119.61,
     "refA": null,
     "refB": null,
     "oracle": 2757
@@ -23,8 +23,8 @@
     "kind": "test",
     "address": "6310 Laguna Bay Court, Houston, TX 77041",
     "consensusSqft": 4109,
-    "elapsed_s": 31.82537841796875,
-    "estimate_total": 17729.73,
+    "elapsed_s": 43.073466539382935,
+    "estimate_total": 18384.64,
     "refA": null,
     "refB": null,
     "oracle": 4186
@@ -33,8 +33,8 @@
     "kind": "test",
     "address": "3820 E Rosebrier St, Springfield, MO 65809",
     "consensusSqft": 5511,
-    "elapsed_s": 29.358028888702393,
-    "estimate_total": 18642.88,
+    "elapsed_s": 44.41493582725525,
+    "estimate_total": 20423.7,
     "refA": null,
     "refB": null,
     "oracle": 5566
@@ -42,9 +42,9 @@
   {
     "kind": "test",
     "address": "1261 20th Street, Newport News, VA 23607",
-    "consensusSqft": 6623,
-    "elapsed_s": 34.351656436920166,
-    "estimate_total": 24485.89,
+    "consensusSqft": 7119,
+    "elapsed_s": 47.462769508361816,
+    "estimate_total": 29086.51,
     "refA": null,
     "refB": null,
     "oracle": 6118
@@ -53,8 +53,8 @@
     "kind": "example",
     "address": "21106 Kenswick Meadows Ct, Humble, TX 77338",
     "consensusSqft": 2267,
-    "elapsed_s": 40.77700877189636,
-    "estimate_total": 10023.55,
+    "elapsed_s": 60.592111349105835,
+    "estimate_total": 8874.5,
     "refA": 2443,
     "refB": 2343,
     "oracle": null
@@ -62,9 +62,9 @@
   {
     "kind": "example",
     "address": "5914 Copper Lilly Lane, Spring, TX 77389",
-    "consensusSqft": 3870,
-    "elapsed_s": 48.93129801750183,
-    "estimate_total": 17325.41,
+    "consensusSqft": 4506,
+    "elapsed_s": 57.299216985702515,
+    "estimate_total": 18565.96,
     "refA": 4391,
     "refB": 4296,
     "oracle": null
@@ -73,8 +73,8 @@
     "kind": "example",
     "address": "122 NW 13th Ave, Cape Coral, FL 33993",
     "consensusSqft": 2803,
-    "elapsed_s": 60.30221486091614,
-    "estimate_total": 13672.87,
+    "elapsed_s": 68.65235424041748,
+    "estimate_total": 13968.01,
     "refA": 2917,
     "refB": 2851,
     "oracle": null
@@ -82,9 +82,9 @@
   {
     "kind": "example",
     "address": "14132 Trenton Ave, Orland Park, IL 60462",
-    "consensusSqft": 3245,
-    "elapsed_s": 43.80822992324829,
-    "estimate_total": 16294.06,
+    "consensusSqft": 3059,
+    "elapsed_s": 55.31973147392273,
+    "estimate_total": 15433.08,
     "refA": 2990,
     "refB": 2935,
     "oracle": null
@@ -93,8 +93,8 @@
     "kind": "example",
     "address": "835 S Cobble Creek, Nixa, MO 65714",
     "consensusSqft": 2895,
-    "elapsed_s": 20.423969745635986,
-    "estimate_total": null,
+    "elapsed_s": 57.079245805740356,
+    "estimate_total": 13600.48,
     "refA": 3070,
     "refB": 3017,
     "oracle": null
