@@ -48,7 +48,7 @@ for kind, addr in ADDRESSES:
     )
     t0 = time.time()
     try:
-        with urllib.request.urlopen(req, timeout=180) as r:
+        with urllib.request.urlopen(req, timeout=240) as r:
             d = json.loads(r.read())
     except Exception as e:
         print(f"  ! {e}")

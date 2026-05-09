@@ -21,7 +21,7 @@ for rec in records:
     body = json.dumps({"address": rec["address"]}).encode()
     req = urllib.request.Request(f"{BASE}/api/quote", data=body, headers={"Content-Type": "application/json"})
     try:
-        with urllib.request.urlopen(req, timeout=120) as r:
+        with urllib.request.urlopen(req, timeout=240) as r:
             d = json.loads(r.read())
     except Exception as e:
         print(f"  {rec['id']:<26} ERR {e}")

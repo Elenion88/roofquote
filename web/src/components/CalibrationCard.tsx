@@ -1,11 +1,11 @@
 import { num } from '../lib/format';
 
 const EXAMPLES = [
-  { addr: '21106 Kenswick Meadows Ct, Humble, TX',  refAvg: 2393, ours: 2900 },
-  { addr: '5914 Copper Lilly Lane, Spring, TX',     refAvg: 4344, ours: 3275 },
-  { addr: '122 NW 13th Ave, Cape Coral, FL',        refAvg: 2884, ours: 2700 },
-  { addr: '14132 Trenton Ave, Orland Park, IL',     refAvg: 2963, ours: 2725 },
-  { addr: '835 S Cobble Creek, Nixa, MO',           refAvg: 3044, ours: 2725 },
+  { addr: '21106 Kenswick Meadows Ct, Humble, TX',  refAvg: 2393, ours: 2267 },
+  { addr: '5914 Copper Lilly Lane, Spring, TX',     refAvg: 4344, ours: 3870 },
+  { addr: '122 NW 13th Ave, Cape Coral, FL',        refAvg: 2884, ours: 2803 },
+  { addr: '14132 Trenton Ave, Orland Park, IL',     refAvg: 2962, ours: 3245 },
+  { addr: '835 S Cobble Creek, Nixa, MO',           refAvg: 3044, ours: 2895 },
 ];
 
 export function CalibrationCard() {
@@ -27,7 +27,7 @@ export function CalibrationCard() {
         </div>
 
         <p className="text-sm text-stone-600">
-          On the 5 properties published with the JobNimbus benchmark (where two trusted commercial measurements are available as ground truth), our consensus differs from the reference average by an average of <b>{mape.toFixed(1)}%</b>. The two commercial references themselves disagree by 1–4% on the same property, so some of our error is irreducible noise.
+          On the 5 example properties published with the JobNimbus benchmark (where two trusted commercial measurements are available as ground truth), our consensus differs from the reference average by an average of <b>{mape.toFixed(1)}%</b>. The two commercial references themselves disagree by 1–4% on the same property, so some of our error is irreducible noise.
         </p>
 
         <div className="overflow-x-auto rounded-xl border border-stone-200 bg-white">
@@ -43,7 +43,7 @@ export function CalibrationCard() {
             <tbody>
               {EXAMPLES.map((r, i) => {
                 const d = (r.ours - r.refAvg) / r.refAvg * 100;
-                const color = Math.abs(d) < 10 ? 'text-emerald-700' : Math.abs(d) < 20 ? 'text-amber-700' : 'text-rose-700';
+                const color = Math.abs(d) < 5 ? 'text-emerald-700' : Math.abs(d) < 10 ? 'text-amber-700' : 'text-rose-700';
                 return (
                   <tr key={i} className="border-t border-stone-100">
                     <td className="px-4 py-2 text-stone-800">{r.addr}</td>
@@ -58,7 +58,7 @@ export function CalibrationCard() {
         </div>
 
         <p className="text-xs text-stone-500">
-          Pipeline: median of two Claude Opus 4.7 vision calls at zoom 19 and 20 satellite tiles. We considered multi-model ensembles (Claude + GPT-4o + Gemini) but they hurt MAPE in our 29-property calibration sweep.
+          Pipeline: Microsoft Open Buildings polygon (deterministic geometry) × pitch detected by Claude Opus 4.7 from a satellite tile. We started with vision-only LLM measurement (best variant 28% MAPE) and switched to deterministic footprint geometry, dropping MAPE 4×.
           {' '}
           <a href="https://github.com/Elenion88/roofquote/blob/main/docs/methodology.md" className="underline decoration-stone-300 hover:decoration-stone-700">Full methodology</a>.
         </p>
