@@ -25,10 +25,8 @@ quoteRoute.post('/quote', async (c) => {
   const body = await c.req.json().catch(() => ({} as any));
   const address = String(body.address ?? '').trim();
   if (!address) return c.json({ error: 'address required' }, 400);
-  const withDemoModels = body.withDemoModels === true;
-  const withPolygon = body.withPolygon === true;
   try {
-    const run = await runQuote(address, { withDemoModels, withPolygon });
+    const run = await runQuote(address);
     return c.json(run);
   } catch (err: any) {
     return c.json({ error: String(err?.message ?? err) }, 500);
@@ -37,7 +35,7 @@ quoteRoute.post('/quote', async (c) => {
 
 quoteRoute.get('/quote/sample', async (c) => {
   const addr = c.req.query('address') ?? '6310 Laguna Bay Court, Houston, TX 77041';
-  const run = await runQuote(addr, { withDemoModels: true });
+  const run = await runQuote(addr);
   return c.json(run);
 });
 
@@ -59,7 +57,7 @@ quoteRoute.get('/tile/:slug/:zoom/overlay', async (c) => {
   const hit = lookupPolygon(run.location.lat, run.location.lng);
   const mpp = metersPerPixel(run.location.lat, zoom, 2);
   // SAM 2 polygons (pixel coords) when present
-  const samResult = (run.results || []).find((r) => r.method === "sam2_footprint");
+  const samResult = (run.results || []).find((r: any) => r.method === "sam2_footprint");
   const showSam = zoom === 21 && Number(samResult && samResult.imageWidth) === 1280;
   const overlay = await renderPolygonOverlay({
     basePngBytes: new Uint8Array(png),

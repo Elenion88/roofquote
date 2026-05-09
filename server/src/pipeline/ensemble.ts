@@ -6,21 +6,16 @@ export type EnsembleResult = {
   inputs: { method: string; model?: string; zoom?: number; sqft: number | null }[];
 };
 
-function median(xs: number[]): number {
-  const s = [...xs].sort((a, b) => a - b);
-  const n = s.length;
-  return n % 2 ? s[(n - 1) / 2] : (s[n / 2 - 1] + s[n / 2]) / 2;
-}
-
 /**
- * Ensemble combiner — preference order with courtyard-detection override:
+ * Ensemble combiner — preference order with courtyard-detection override.
+ * Local-only methods: MS Buildings polygon × Qwen pitch (primary), SAM 2 mask × Qwen pitch (backup).
  *
  *  - If SAM 2 found ≥3 planes covering meaningfully less than the MS polygon
  *    (≥10% smaller), the MS polygon is overcounting (courtyard/patio inside
  *    the polygon outline). Prefer SAM 2's plane-summed footprint.
  *  - Else prefer footprint_msbuildings (calibrated, MAPE ~5–6%).
  *  - Else fall back to sam2_footprint (when no MS polygon available).
- *  - Else median(vision_direct opus z19, z20).
+ *  - Else no consensus (both methods failed).
  */
 export function combineEnsemble(results: MethodResult[]): EnsembleResult {
   const ms = results.find(
@@ -69,20 +64,5 @@ export function combineEnsemble(results: MethodResult[]): EnsembleResult {
     };
   }
 
-  const fallback = results.filter(
-    (r) =>
-      r.method === 'vision_direct:measured' &&
-      r.model === 'anthropic/claude-opus-4-7' &&
-      typeof r.totalSqft === 'number' &&
-      (r.zoom === 19 || r.zoom === 20)
-  );
-  const sqfts = fallback.map((r) => r.totalSqft as number);
-  if (!sqfts.length) {
-    return { consensusSqft: null, combiner: 'no eligible methods', inputs: [] };
-  }
-  return {
-    consensusSqft: Math.round(median(sqfts)),
-    combiner: 'fallback: median(vision opus z19, z20)',
-    inputs: fallback.map((r) => ({ method: r.method, model: r.model, zoom: r.zoom, sqft: r.totalSqft })),
-  };
+  return { consensusSqft: null, combiner: 'no eligible methods', inputs: [] };
 }
