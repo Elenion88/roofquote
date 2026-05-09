@@ -48,3 +48,9 @@ export function pngToDataUrl(bytes: Uint8Array): string {
   const b64 = Buffer.from(bytes).toString('base64');
   return `data:image/png;base64,${b64}`;
 }
+
+
+export function jpegToDataUrl(bytes: Uint8Array): string {
+  const b64 = Buffer.from(bytes).toString('base64');
+  return `data:image/jpeg;base64,${b64}`;
+}
