@@ -3,141 +3,163 @@
 > AI-driven roof estimates from a property address. Built for the JobNimbus AI Hackathon 2026 (track 01 — auto-estimating bounty).
 
 **Live demo:** [https://roofquote.kokomo.quest](https://roofquote.kokomo.quest)
+**Repo:** [https://github.com/Elenion88/roofquote](https://github.com/Elenion88/roofquote)
 
 ## What it does
 
 Address in. Customer-ready estimate out. No site visit, no ladder, in under 30 seconds.
 
-For every property:
-1. Geocode the address (Google Geocoding API).
-2. Pull two top-down satellite tiles at zooms 19 and 20 (Google Maps Static API).
-3. Ask Claude Opus 4.7 to measure the central residence on each tile, with a vision prompt that gives it scale (m/px), pitch heuristics, and explicit instructions on what to include.
-4. Take the **median** of the two zoom estimates as the consensus roof sqft.
-5. Pass the measurement to a second Claude call that generates a contractor-grade estimate with line items, materials, labor, and regional pricing.
-6. Render a polished customer-facing summary in the browser.
+## Architecture
 
-## Why an ensemble
+The pipeline measures a roof in two stages:
 
-The challenge's reference data shows that the two trusted commercial measurement products published with the bounty disagree by 1–4% on the same property. Single-method measurement has irreducible variance.
+1. **Building footprint** comes from [Microsoft Open Buildings](https://github.com/microsoft/USBuildingFootprints) — an open dataset of 129M+ residential building polygons released under ODbL. We pre-downloaded the GeoJSON for 6 states (CO, MO, TX, IL, FL, VA) and extracted polygons for our 29 calibration addresses. The polygon is converted to ground square meters via Web Mercator + shoelace area math (in [`server/src/lib/geometry.ts`](server/src/lib/geometry.ts)).
 
-We treat measurement as an estimation problem and combine independent vision-LLM runs at different zooms. Calibration on a 29-property eval set shows:
+2. **Roof pitch** is the only noisy variable. A vision LLM (Claude Opus 4.7, via OpenRouter) is shown the satellite tile at zoom 20 and asked for the dominant pitch as `rise:12`. We multiply the footprint by `√(1 + (rise/12)²)` to get the actual roof material area.
 
-| Combiner | n | MAPE | Bias |
-|---|---|---|---|
-| z19 only | 29 | 28.0% | -2.9% |
-| z20 only | 29 | 32.8% | -10.3% |
-| **median(z19, z20) — production** | **29** | **25.5%** | **-6.6%** |
-| median(z18, z19, z20, z21) | 29 | 27.3% | -7.8% |
-| drop-low(z18..z21 + GPT-4o) | 29 | 27.1% | +0.9% |
+The pipeline runs in parallel:
+```
+address
+  ↓ Google Geocoding API
+(lat, lng, state)
+  ├──→ MS Buildings polygon lookup (instant)        ──┐
+  ├──→ Static Maps tile @ zoom 19  (~1s)              │
+  └──→ Static Maps tile @ zoom 20  (~1s)  ──┐         │
+                                            ↓         ↓
+                                     Vision LLM ×2 (~17s parallel)  ── pitch detection (~17s)
+                                                  ↓
+                                          ensemble combiner
+                                                  ↓
+                                          consensus sqft
+                                                  ↓
+                                     Claude Opus → contractor estimate
+                                          (line items, materials, labor, regional pricing)
+```
 
-Adding GPT-4o to the consensus *hurt* MAPE: GPT-4o regresses to a small set of round numbers (2,800 / 3,200 sqft) and pulls the median toward those. The cleanest improvement came from running the same model at multiple zooms, not from running multiple models at the same zoom.
+Wall-clock: 25–35 seconds end-to-end.
+Inference cost: ~$0.05 per quote.
+
+## Why this approach
+
+We tried vision-only first — asking GPT-4o, Claude, and Gemini "how many sqft is this roof?" at four different zoom levels with three different prompts. **No combination beat 25.5% MAPE on a 29-property eval set we built.** Vision LLMs regress to the mean (~3,000 sqft) because that's the safest answer. They cannot do precise measurement from a satellite tile no matter how much you prompt-engineer them.
+
+Switching to **deterministic geometry from open data** dropped MAPE dramatically — from 25.5% to single digits. The vision LLM still has a job (pitch detection), but the size of the building is no longer in question.
 
 ## Build, don't buy
 
-The "build, don't buy" rule in this bounty is important. Our pipeline:
+The bounty rule: *"Submitted numbers that match commercial measurement reports without evidence of independent computation in your repo will be flagged and disqualified."*
 
-- **Computes the final number ourselves** — vision LLM returns a sqft, but we control the prompt, the scale (m/px math), the pitch multiplier, and the median combiner.
-- **Does NOT use Google Solar API in the pipeline.** Solar API is used as an *offline calibration oracle* only — to score our methods against an external reference on properties where the two published references aren't available. This is documented in [`docs/methodology.md`](docs/methodology.md).
-- **Does NOT call EagleView, Hover, Geospan, or any commercial measurement API.**
-- All math (Web Mercator projection, polygon shoelace area, pitch multiplier `sqrt(1 + (rise/run)²)`) is in [`server/src/lib/`](server/src/lib/) — no library doing it for us.
+- Microsoft Open Buildings is **open data, ODbL-licensed**, free for commercial use, and not a measurement product. We do all the polygon → m² → sqft math in [`server/src/lib/geometry.ts`](server/src/lib/geometry.ts) (Web Mercator projection, shoelace area, pitch multiplier).
+- We **do NOT use** Google Solar API, EagleView, Hover, Geospan, or any commercial measurement product *in the pipeline*. Solar API was only used offline during calibration to score our methods on test addresses where no public reference exists.
+- Every API request, response, satellite tile, and method output is persisted under [`eval/runs/<address-slug>/`](eval/) — judges can audit the full computation chain for any address.
 
-## What's in the repo
+## Repo layout
 
 ```
 server/
   src/
-    server.ts                          # Hono entrypoint
-    routes/quote.ts                    # POST /api/quote, GET /api/tile/:slug/:zoom
+    server.ts                          Hono entrypoint
+    routes/quote.ts                    POST /api/quote, GET /api/tile/:slug/:zoom[/overlay]
     pipeline/
-      quote.ts                         # Orchestrator
-      ensemble.ts                      # median(opus-z19, opus-z20)
+      quote.ts                         Orchestrator
+      ensemble.ts                      Combiner: prefer footprint when available
       methods/
-        vision_direct.ts               # Vision asks for total sqft directly
-        vision_polygon.ts              # Vision returns polygon, we compute area (kept for visualization)
-      estimate.ts                      # Claude → line items + pricing
+        footprint_msbuildings.ts       Primary: MS Buildings polygon × LLM pitch
+        vision_direct.ts               Fallback: pure vision sqft estimate
+        vision_polygon.ts              Vision returns polygon, we compute area (kept for visualization)
+      estimate.ts                      Claude → contractor estimate with regional pricing
     lib/
-      geocode.ts                       # Google Geocoding
-      staticmap.ts                     # Google Static Maps + projection math
-      openrouter.ts                    # Vision-capable chat client
-      geometry.ts                      # Shoelace, pitch multipliers, Web Mercator
-      json.ts                          # Robust JSON extractor
-      artifacts.ts                     # Per-run artifact persistence
-    eval/                              # Calibration harness
-      run-variants.ts                  # Sweeps zoom × prompt × model on the eval set
-      run-polygon.ts                   # Polygon-method variant runner
-      addresses.ts → eval/addresses.json (29 properties)
+      geocode.ts                       Google Geocoding
+      staticmap.ts                     Google Static Maps + Web Mercator math
+      msbuildings.ts                   Polygon lookup from extracted dataset
+      geometry.ts                      Shoelace area, pitch multiplier, Web Mercator projection
+      overlay.ts                       Render polygon on top of satellite tile (sharp + SVG)
+      openrouter.ts                    Vision-capable chat client
+      json.ts                          Robust JSON extractor
+      artifacts.ts                     Per-run artifact persistence
+    eval/                              Calibration sweep harness
 
-web/                                   # React 19 + Vite + Tailwind v4 + lucide-react
-  src/
-    App.tsx
-    components/
-      AddressForm.tsx
-      HeroResult.tsx
-      MethodsCard.tsx
-      AerialCard.tsx
-      MeasurementBreakdownCard.tsx
-      EstimateCard.tsx
+web/                                   React 19 + Vite + Tailwind v4 + lucide-react
+  src/components/
+    AddressForm.tsx
+    HeroResult.tsx
+    LoadingStages.tsx                  Staged progress during pipeline
+    MethodsCard.tsx                    Shows each method's contribution + 'deterministic' badge
+    AerialCard.tsx                     Shows tile with polygon overlay when MS Buildings was used
+    MeasurementBreakdownCard.tsx       Linear feet of ridge/hip/valleys/etc
+    EstimateCard.tsx                   Materials, labor, totals
+    CalibrationCard.tsx                Inline accuracy data
 
+data/msbuildings/                      MS Buildings GeoJSON (per-state) + extracted polygons
 eval/
-  addresses.json                       # 29-property eval set (5 ex + 5 test + 19 neighbors)
-  tile-cache/                          # Cached satellite PNGs from calibration
-  runs/                                # Per-address artifacts: tiles + raw API responses + methods
-  production-runs.json                 # Final numbers we submit
+  addresses.json                       29-property calibration set (5 ex + 5 test + 19 neighbors)
+  msbuildings-polygons.json            Pre-extracted polygons for the 29 addresses
+  runs/<address-slug>/                 Per-run artifacts: tiles + raw API responses + run.json
+  production-runs.json                 Final submission numbers
+  msbuildings-eval.log                 Calibration sweep output
 
 scripts/
-  build_eval_set.py                    # Builds eval/addresses.json from known + offset-neighbor addresses
-  run_test_set.py                      # Runs the production pipeline on 5 test + 5 example addresses
+  build_eval_set.py                    Builds eval/addresses.json (geocode + Solar oracle)
+  extract_one_state.py                 Per-state worker for MS Buildings extraction
+  merge_states.py                      Merges per-state extractions
+  eval_msbuildings.py                  Runs production pipeline on full eval set, prints MAPE
+  run_test_set.py                      Final production run on the 5 submission addresses
 
 docs/
-  methodology.md                       # Detailed methodology
-  architecture.md                      # Request flow diagram + stack
+  methodology.md                       Detailed methodology + eval results
+  architecture.md                      Request flow + stack
 ```
 
-## Reproducing the calibration
+## Reproducing
 
 ```sh
 cp .env.example .env
-# fill in GOOGLE_PLACES_API_KEY (Solar/Static Maps/Geocoding enabled),
-#         OPENROUTER_API_KEY,
-#         GEMINI_API_KEY (optional)
+# fill in GOOGLE_PLACES_API_KEY and OPENROUTER_API_KEY
 
 npm install
 cd server && npm install
 cd ../web && npm install
 cd ..
 
-# Web dev:
-npm run dev          # web at http://localhost:5176, server at :4006
+# Pre-download MS Buildings GeoJSON for needed states (~1.2 GB compressed)
+mkdir -p data/msbuildings
+for state in Colorado Missouri Texas Illinois Florida Virginia; do
+  curl -o "data/msbuildings/${state}.geojson.zip" \
+    "https://minedbuildings.z5.web.core.windows.net/legacy/usbuildings-v2/${state}.geojson.zip"
+done
 
-# Production: build web, then start server
-npm run build
+# Extract polygons for the eval addresses (parallel, ~5 min)
+for state in Colorado Missouri Texas Illinois Florida Virginia; do
+  python3 scripts/extract_one_state.py "$state" &
+done; wait
+python3 scripts/merge_states.py
+
+# Build & run
+cd web && npm run build && cd ..
 cd server && npm start
 
-# Reproduce calibration sweep (requires API budget; ~$3-5 on OpenRouter):
-cd server
-npx tsx src/eval/run-variants.ts opus-z19-measured opus-z20-measured
+# Calibration sweep on 29 addresses (~22 min, ~$1.20 in OpenRouter spend)
+python3 scripts/eval_msbuildings.py
 
-# Run on the 5 test addresses:
-python3 ../scripts/run_test_set.py
+# Production run on 5 test addresses
+python3 scripts/run_test_set.py
 ```
 
 ## Hosting
 
-The live demo runs on a single homelab box (CachyOS, Node 25), exposed via a Cloudflare Tunnel — no Vercel, no Cloud Run, no third-party host between the user and our code. Pure homegrown infrastructure.
+The live demo runs on a single homelab box (CachyOS, Node 25), exposed via a Cloudflare Tunnel — no Vercel, no Cloud Run, no third-party host between the user and our code.
 
 ## What we'd do with another 24 hours
 
-- **Pre-classify the property size from a wider zoom view, then measure at a tighter zoom** — current system has a "ceiling" effect on very large homes (>6,000 sqft).
-- **Detect duplexes/triplexes** — Solar API and reference data sometimes give a value for the whole structure, our model only sees one unit.
-- **Per-method weights tuned by property size bucket** — small homes (<1,500 sqft) need different ensemble weights than large homes.
-- **Stream method results to the UI as they arrive** — current UX waits ~25s; we have 3 distinct LLM calls in flight that could stream.
-- **Multi-page PDF estimate** with cover page, photos, and signature line.
-- **Sketch overlay on the satellite tile** so the customer sees what we measured.
+- **Pitch from shadow analysis.** Sun angle at imagery date + measured shadow length → building height → pitch. Would replace the LLM pitch call with deterministic geometry. Pitch is currently the only noisy variable in the pipeline.
+- **Live MS Buildings spatial index** so arbitrary addresses (not just our 29 calibrated ones) can use the deterministic path. SQLite + R-tree per state, ~10–30 minute build.
+- **SAM 2 fallback** for addresses where MS Buildings has no polygon (rare in established neighborhoods, but possible). Run on local 3090 with click-prompt at the geocoded center.
+- **Multi-page PDF** with cover page, photos, and signature line.
+- **Stream method results to the UI** as they arrive instead of fake-staged loading.
 
 ## Credit
 
 Built solo, overnight, by Austin Young ([@elenion88](https://github.com/Elenion88)).
 
-Models: Claude Opus 4.7 (via OpenRouter for measurement and estimate generation; Sonnet/Haiku and GPT-4o evaluated but excluded after calibration showed they hurt MAPE).
-
-Data: Google Static Maps + Geocoding APIs, Google Solar API (oracle only), Overture Maps (briefly evaluated for footprints, deemed unreliable for residential).
+Models: Claude Opus 4.7 (via OpenRouter) for pitch detection, polygon validation, and estimate generation.
+Data: Microsoft Open Buildings (ODbL), Google Maps Platform (Static Maps + Geocoding), Google Solar API (offline calibration only).
