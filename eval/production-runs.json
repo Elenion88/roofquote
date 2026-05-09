@@ -1,0 +1,102 @@
+[
+  {
+    "kind": "test",
+    "address": "3561 E 102nd Ct, Thornton, CO 80229",
+    "consensusSqft": 2500,
+    "elapsed_s": 24.386711835861206,
+    "estimate_total": 10432.28,
+    "refA": null,
+    "refB": null,
+    "oracle": 2081
+  },
+  {
+    "kind": "test",
+    "address": "1612 S Canton Ave, Springfield, MO 65802",
+    "consensusSqft": 3125,
+    "elapsed_s": 29.48772406578064,
+    "estimate_total": 13862.04,
+    "refA": null,
+    "refB": null,
+    "oracle": 2757
+  },
+  {
+    "kind": "test",
+    "address": "6310 Laguna Bay Court, Houston, TX 77041",
+    "consensusSqft": 3525,
+    "elapsed_s": 24.621365785598755,
+    "estimate_total": 15580.7,
+    "refA": null,
+    "refB": null,
+    "oracle": 4186
+  },
+  {
+    "kind": "test",
+    "address": "3820 E Rosebrier St, Springfield, MO 65809",
+    "consensusSqft": 3700,
+    "elapsed_s": 21.207536220550537,
+    "estimate_total": 16540.2,
+    "refA": null,
+    "refB": null,
+    "oracle": 5566
+  },
+  {
+    "kind": "test",
+    "address": "1261 20th Street, Newport News, VA 23607",
+    "consensusSqft": 3075,
+    "elapsed_s": 25.088812828063965,
+    "estimate_total": 12394.37,
+    "refA": null,
+    "refB": null,
+    "oracle": 6118
+  },
+  {
+    "kind": "example",
+    "address": "21106 Kenswick Meadows Ct, Humble, TX 77338",
+    "consensusSqft": 2900,
+    "elapsed_s": 23.479323387145996,
+    "estimate_total": 13374.29,
+    "refA": 2443,
+    "refB": 2343,
+    "oracle": null
+  },
+  {
+    "kind": "example",
+    "address": "5914 Copper Lilly Lane, Spring, TX 77389",
+    "consensusSqft": 3275,
+    "elapsed_s": 24.206112146377563,
+    "estimate_total": 14084.54,
+    "refA": 4391,
+    "refB": 4296,
+    "oracle": null
+  },
+  {
+    "kind": "example",
+    "address": "122 NW 13th Ave, Cape Coral, FL 33993",
+    "consensusSqft": 2700,
+    "elapsed_s": 24.959453344345093,
+    "estimate_total": 12889.54,
+    "refA": 2917,
+    "refB": 2851,
+    "oracle": null
+  },
+  {
+    "kind": "example",
+    "address": "14132 Trenton Ave, Orland Park, IL 60462",
+    "consensusSqft": 2725,
+    "elapsed_s": 23.30492639541626,
+    "estimate_total": 12062.76,
+    "refA": 2990,
+    "refB": 2935,
+    "oracle": null
+  },
+  {
+    "kind": "example",
+    "address": "835 S Cobble Creek, Nixa, MO 65714",
+    "consensusSqft": 2725,
+    "elapsed_s": 21.69633913040161,
+    "estimate_total": 12757.42,
+    "refA": 3070,
+    "refB": 3017,
+    "oracle": null
+  }
+]
