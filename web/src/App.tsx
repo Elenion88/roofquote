@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Sparkles } from 'lucide-react';
 import { AddressForm } from './components/AddressForm';
 import { LoadingStages } from './components/LoadingStages';
+import { CalibrationCard } from './components/CalibrationCard';
 import { HeroResult } from './components/HeroResult';
 import { MethodsCard } from './components/MethodsCard';
 import { AerialCard } from './components/AerialCard';
@@ -70,6 +71,14 @@ export default function App() {
               </>
             )}
           </div>
+        )}
+
+        {!run && !pending && (
+          <div className="mt-12"><CalibrationCard /></div>
+        )}
+
+        {run && (
+          <div className="mt-6"><CalibrationCard /></div>
         )}
 
         <footer className="mt-16 pt-8 border-t border-stone-200 text-sm text-stone-500">
