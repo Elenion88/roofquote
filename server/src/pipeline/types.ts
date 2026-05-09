@@ -15,6 +15,8 @@ export type MethodResult = {
   raw?: unknown;
 };
 
+import type { Estimate } from './estimate.ts';
+
 export type QuoteRun = {
   address: string;
   formattedAddress: string;
@@ -22,6 +24,7 @@ export type QuoteRun = {
   results: MethodResult[];
   consensusSqft: number | null;
   combiner?: string;
+  estimate?: Estimate | null;
   startedAt: string;
   finishedAt: string;
 };

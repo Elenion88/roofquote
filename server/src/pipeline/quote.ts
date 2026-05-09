@@ -4,7 +4,6 @@ import { saveArtifact, slugify } from '../lib/artifacts.ts';
 import { visionDirect } from './methods/vision_direct.ts';
 import { footprintMSBuildings } from './methods/footprint_msbuildings.ts';
 import { sam2Footprint } from './methods/sam2_footprint.ts';
-import { lookupPolygon } from '../lib/msbuildings.ts';
 import { visionPolygon } from './methods/vision_polygon.ts';
 import { combineEnsemble } from './ensemble.ts';
 import { generateEstimate, stateFromFormatted } from './estimate.ts';
@@ -26,9 +25,10 @@ export async function runQuote(address: string, opts: { withPolygon?: boolean; w
   const { location, formatted, raw: geocodeRaw } = await geocode(address);
   saveArtifact(slug, 'geocode.json', geocodeRaw as object);
 
-  // ─ Fetch tiles for consensus zooms (in parallel) ────────────────────────
+  // ─ Fetch all tiles in parallel (z19 + z20 for consensus, z21 for SAM 2 / display)
+  const allZooms = [...ZOOMS_FOR_CONSENSUS, ...ZOOMS_FOR_DISPLAY] as const;
   const tiles = await Promise.all(
-    ZOOMS_FOR_CONSENSUS.map((zoom) =>
+    allZooms.map((zoom) =>
       fetchStaticMap({ lat: location.lat, lng: location.lng, zoom, size: 640, scale: 2 })
         .then((tile) => {
           saveArtifact(slug, `staticmap-z${zoom}.png`, Buffer.from(tile.pngBytes));
@@ -36,37 +36,21 @@ export async function runQuote(address: string, opts: { withPolygon?: boolean; w
         })
     )
   );
-  // SAM 2 segmentation method — uses z21 tile (highest detail).
-  // Tile is fetched independently (display tiles are async-saved, we need the bytes here).
-  const z21Promise = fetchStaticMap({ lat: location.lat, lng: location.lng, zoom: 21, size: 640, scale: 2 })
-    .then((tile) => {
-      saveArtifact(slug, `staticmap-z21.png`, Buffer.from(tile.pngBytes));
-      return tile;
-    });
-
-  const sam2Job = z21Promise.then((tile) =>
-    sam2Footprint({
-      pngBytes: tile.pngBytes,
-      lat: location.lat,
-      lng: location.lng,
-      zoom: 21,
-      scale: 2,
-      imageSizePx: tile.imageSize.width,
-    })
-  );
-
-  // Display-only tiles (z21) for the UI
-  await Promise.all(
-    ZOOMS_FOR_DISPLAY.map((zoom) =>
-      fetchStaticMap({ lat: location.lat, lng: location.lng, zoom, size: 640, scale: 2 })
-        .then((tile) => saveArtifact(slug, `staticmap-z${zoom}.png`, Buffer.from(tile.pngBytes)))
-    )
-  );
-
-  // ─ Run vision_direct (opus, measured) at each zoom in parallel ──────────
-  // Try MS Buildings primary path (deterministic footprint + vision pitch)
   const z19Tile = tiles.find((t) => t.zoom === 19)!.tile;
   const z20Tile = tiles.find((t) => t.zoom === 20)!.tile;
+  const z21Tile = tiles.find((t) => t.zoom === 21)!.tile;
+
+  const sam2Job = sam2Footprint({
+    pngBytes: z21Tile.pngBytes,
+    lat: location.lat,
+    lng: location.lng,
+    zoom: 21,
+    scale: 2,
+    imageSizePx: z21Tile.imageSize.width,
+  });
+
+  // ─ Run vision_direct (opus, measured) at each zoom in parallel ──────────
+  // Try MS Buildings primary path (deterministic footprint + Qwen pitch)
   const msbuildingsJob = footprintMSBuildings({
     z19PngBytes: z19Tile.pngBytes,
     z20PngBytes: z20Tile.pngBytes,
@@ -89,7 +73,6 @@ export async function runQuote(address: string, opts: { withPolygon?: boolean; w
   // ─ Optional demo models (gpt-4o on z19) ─────────────────────────────────
   const demoJobs: Promise<MethodResult>[] = [];
   if (opts.withDemoModels) {
-    const z19Tile = tiles.find((t) => t.zoom === 19)!.tile;
     for (const m of DEMO_MODELS) {
       demoJobs.push(
         visionDirect({
@@ -108,7 +91,6 @@ export async function runQuote(address: string, opts: { withPolygon?: boolean; w
   // ─ Optional polygon method (for visualization story) ────────────────────
   const polygonJobs: Promise<MethodResult>[] = [];
   if (opts.withPolygon) {
-    const z20Tile = tiles.find((t) => t.zoom === 20)!.tile;
     polygonJobs.push(
       visionPolygon({
         pngBytes: z20Tile.pngBytes,
@@ -137,17 +119,24 @@ export async function runQuote(address: string, opts: { withPolygon?: boolean; w
   const ens = combineEnsemble(results);
 
   // ─ Generate estimate (only if we have a consensus number) ──────────────
+  // Use the pitch from whichever method actually produced the consensus number
+  // — keeps the line-item math consistent with the headline sqft.
   let estimate: Estimate | null = null;
   if (ens.consensusSqft && opts.withEstimate !== false) {
-    const repForPitch = consensus.find((r) => r.pitchRatio != null) ?? consensus[0];
-    const pitchRatio = repForPitch?.pitchRatio ?? 0.5;
+    const preferred = [ms, sam2, ...consensus].find(
+      (r) => r && r.pitchRatio != null,
+    );
+    const pitchRatio = preferred?.pitchRatio ?? 0.5;
     const pitchRise = Math.round(pitchRatio * 12);
+    const footprintSqft =
+      preferred?.footprintSqft ??
+      Math.round(ens.consensusSqft / Math.sqrt(1 + pitchRatio ** 2));
     try {
       estimate = await generateEstimate({
         address,
         formattedAddress: formatted,
         totalSqft: ens.consensusSqft,
-        footprintSqft: repForPitch?.footprintSqft ?? Math.round(ens.consensusSqft / Math.sqrt(1 + pitchRatio ** 2)),
+        footprintSqft,
         pitch: `${pitchRise}:12`,
         pitchRatio,
         state: stateFromFormatted(formatted),
@@ -165,10 +154,10 @@ export async function runQuote(address: string, opts: { withPolygon?: boolean; w
     results,
     consensusSqft: ens.consensusSqft,
     combiner: ens.combiner,
+    estimate,
     startedAt,
     finishedAt: new Date().toISOString(),
   };
-  (run as any).estimate = estimate;
   saveArtifact(slug, 'run.json', run);
-  return run as any;
+  return run;
 }

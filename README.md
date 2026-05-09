@@ -35,13 +35,13 @@ The pipeline runs in **two layers**:
 
 reef calls cachy-tower over tailscale. Total wall-clock: 25–35 seconds. ~$0 marginal cost.
 
-## Methods (multiple measurement paths in parallel, ensemble-combined)
+## Methods (run in parallel on every quote, ensemble-combined)
 
 1. **MS Buildings polygon × Qwen pitch** *(primary — calibrated MAPE ~5%)* — Pre-extracted MS Buildings footprint area × Qwen2.5-VL-detected pitch. Deterministic geometry. Local pitch detection.
-2. **SAM 2 mask × Qwen pitch** — SAM 2 (Meta) refines the polygon to just the actual roof material (excludes courtyards/breezeways). Per-plane segmentation also produced for visualization.
-3. **vision_direct fallback** — Pure vision-LLM measurement at z19+z20. Used only if MS Buildings has no polygon.
+2. **SAM 2 mask × Qwen pitch** — SAM 2 (Meta) refines the polygon to the actual roof material. Per-plane segmentation excludes courtyards/breezeways. When SAM 2's plane sum is meaningfully smaller than the MS polygon (70–90% of it), the ensemble overrides to SAM 2 — that signal indicates a real courtyard inside the building outline.
+3. **vision_direct (Claude Opus z19 + z20)** — Pure vision-LLM measurement, runs alongside the other two as an independent cross-check. Used as the consensus value only when no MS Buildings polygon is available for the address.
 
-The result UI shows all three side-by-side so a roofer can see where they agree.
+The result UI shows all three side-by-side so a roofer can see where they agree (and where they disagree).
 
 ## Why this is the right architecture
 
@@ -80,12 +80,14 @@ server/
     server.ts                          Hono entrypoint
     routes/quote.ts                    POST /api/quote, GET /api/tile/:slug/:zoom[/overlay]
     pipeline/
-      quote.ts                         Orchestrator
-      ensemble.ts                      Combiner — prefers MS Buildings × pitch
+      quote.ts                         Orchestrator (geocode → tiles → 3 methods → ensemble → estimate)
+      ensemble.ts                      Combiner — prefers MS Buildings × pitch, override to SAM 2 on courtyard
       methods/
         footprint_msbuildings.ts       Primary: MS polygon × Qwen pitch (LOCAL)
-        sam2_footprint.ts              SAM 2 mask × Qwen pitch (LOCAL)
-        vision_direct.ts               Pure vision LLM (fallback)
+        sam2_footprint.ts              SAM 2 mask × Qwen pitch (LOCAL) — courtyard-aware
+        vision_direct.ts               Vision-LLM cross-check (Claude Opus on z19+z20)
+        vision_polygon.ts              Eval-only — opt-in via withPolygon flag
+        streetview_pitch.ts            Eval-only — earlier prototype, not in production path
       estimate.ts                      Claude → contractor estimate
     lib/
       cachy.ts                         HTTP client for cachy-tower GPU service

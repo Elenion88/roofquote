@@ -29,7 +29,11 @@ type Record = {
   } | null;
 };
 
-const POLY_PATH = '/home/kokomo/dev/roofquote/data/msbuildings/extracted/polygons.json';
+// Resolve relative to the server source — works from any clone.
+// process.env.MSBUILDINGS_POLY_PATH wins if set (e.g. for non-standard layouts).
+const POLY_PATH =
+  process.env.MSBUILDINGS_POLY_PATH ??
+  join(import.meta.dirname, '../../../data/msbuildings/extracted/polygons.json');
 
 let _records: Record[] | null = null;
 function load(): Record[] {

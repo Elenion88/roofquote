@@ -9,3 +9,8 @@ dist/
 *.db-wal
 .DS_Store
 eval/runs/
+
+# MS Open Buildings source bundles — re-fetch via README reproduction script.
+# (Per-state .geojson.zip files exceed GitHub's 100MB push limit.)
+data/msbuildings/*.geojson.zip
+data/msbuildings/*.geojson
