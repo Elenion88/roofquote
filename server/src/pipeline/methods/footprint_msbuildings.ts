@@ -1,45 +1,40 @@
 import { openrouterChat, pngToDataUrl } from '../../lib/openrouter.ts';
 import { extractJson } from '../../lib/json.ts';
 import { lookupPolygon } from '../../lib/msbuildings.ts';
-import { pitchMultiplier, M2_TO_SQFT } from '../../lib/geometry.ts';
+import { renderPolygonOverlay } from '../../lib/overlay.ts';
+import { pitchMultiplier, M2_TO_SQFT, metersPerPixel as mppFn } from '../../lib/geometry.ts';
+import { metersPerPixel as smMpp } from '../../lib/staticmap.ts';
 import type { MethodResult } from '../types.ts';
 
-const PITCH_PROMPT = (p: { lat: number; lng: number }) => `
-Image is a top-down satellite tile centered on lat=${p.lat}, lng=${p.lng}.
-Your ONLY task: estimate the dominant roof pitch of the central residential dwelling.
+const VALIDATE_AND_PITCH_PROMPT = (p: { lat: number; lng: number }) => `
+The image is a top-down satellite tile centered on lat=${p.lat}, lng=${p.lng}.
+A green polygon has been overlaid on the image. The white pin marks the geocoded address center.
 
-Roof pitch is expressed as rise:12. Common residential pitches:
-- 3:12 = very low slope (modern, ranch)
-- 4:12 = walkable low slope (mid-century, southern US)
-- 6:12 = standard residential (most common)
-- 8:12 = steep (newer construction, snowy regions)
-- 10:12 or steeper = very steep (Victorian, mountain regions)
-
-Look at:
-- Visible ridge lines and gables
-- Shadow patterns on roof planes
-- How sharp/distinct the roof edges are (steeper roofs cast more shadow)
+Your tasks:
+1. VALIDATE: Does the green polygon outline the SINGLE primary residential dwelling at the center of the image? It should outline the main building only — not multiple buildings, not a detached garage, not a yard.
+   - "yes" if the polygon is correct or close to correct (within ~10% of the actual roof outline)
+   - "partial" if the polygon outlines the building but cuts off a wing/extension/porch
+   - "wrong-building" if the polygon outlines the wrong structure (a neighbor, a shed, a school)
+   - "missing-roof" if there's clearly a building visible at the pin that the polygon does not cover
+2. PITCH: Estimate the dominant roof pitch as rise:12 (3:12, 4:12, 6:12, 8:12, 10:12, 12:12).
 
 Return ONLY JSON:
 {
-  "pitch": "<x:12 e.g. '6:12'>",
-  "confidence": "low" | "medium" | "high",
-  "reasoning": "<one sentence>"
+  "validation": "yes" | "partial" | "wrong-building" | "missing-roof",
+  "pitch": "<x:12>",
+  "reasoning": "<one sentence explaining validation choice>"
 }
 `.trim();
 
-/**
- * Footprint-based measurement.
- * Footprint comes from Microsoft Buildings (deterministic).
- * Pitch comes from a vision LLM (the only noisy variable).
- * Roof area = footprint × pitch_multiplier.
- */
 export async function footprintMSBuildings(args: {
   pngBytes: Uint8Array;
   lat: number;
   lng: number;
+  zoom: number;
+  metersPerPixel: number;
+  sizePx: number;
   model?: string;
-}): Promise<MethodResult & { footprintSqft: number; pitchSource?: string }> {
+}): Promise<MethodResult & { footprintSqft: number; validation?: string }> {
   const start = Date.now();
   const model = args.model ?? 'anthropic/claude-opus-4-7';
 
@@ -55,28 +50,39 @@ export async function footprintMSBuildings(args: {
     };
   }
 
-  // Pitch from vision
-  let pitchRise = 6; // default 6:12
-  let pitchReason = 'default fallback';
+  // Render polygon overlay on the tile, then ask vision to validate + estimate pitch
+  let validation = 'unknown';
+  let pitchRise = 6;
+  let pitchReason = 'default';
   try {
+    const overlay = await renderPolygonOverlay({
+      basePngBytes: args.pngBytes,
+      centerLat: args.lat,
+      centerLng: args.lng,
+      metersPerPixel: args.metersPerPixel,
+      imageWidthPx: args.sizePx,
+      imageHeightPx: args.sizePx,
+      polygonLonLat: hit.polygonLonLat,
+    });
     const r = await openrouterChat({
       model,
       temperature: 0,
-      max_tokens: 200,
+      max_tokens: 300,
       response_format: { type: 'json_object' },
       messages: [
         { role: 'system', content: 'You are a roofing-measurement expert. Return ONLY valid JSON.' },
         {
           role: 'user',
           content: [
-            { type: 'text', text: PITCH_PROMPT(args) },
-            { type: 'image_url', image_url: { url: pngToDataUrl(args.pngBytes), detail: 'high' } },
+            { type: 'text', text: VALIDATE_AND_PITCH_PROMPT(args) },
+            { type: 'image_url', image_url: { url: pngToDataUrl(new Uint8Array(overlay)), detail: 'high' } },
           ],
         },
       ],
     });
     const text = r.choices[0]?.message?.content ?? '';
-    const json = extractJson<{ pitch: string; confidence: string; reasoning: string }>(text);
+    const json = extractJson<{ validation: string; pitch: string; reasoning: string }>(text);
+    validation = json.validation ?? 'unknown';
     const pm = String(json.pitch ?? '6:12').match(/^(\d+):12$/);
     if (pm) pitchRise = parseInt(pm[1], 10);
     pitchReason = json.reasoning ?? '';
@@ -87,7 +93,22 @@ export async function footprintMSBuildings(args: {
       totalSqft: null,
       footprintSqft: hit.footprintSqft,
       durationMs: Date.now() - start,
-      errorMessage: `pitch detection failed: ${err?.message ?? err}`,
+      errorMessage: `validation/pitch failed: ${err?.message ?? err}`,
+    };
+  }
+
+  // If polygon is wrong, return null so the pipeline falls back to vision_direct
+  if (validation === 'wrong-building' || validation === 'missing-roof') {
+    return {
+      method: 'footprint_msbuildings',
+      model,
+      totalSqft: null,
+      footprintSqft: hit.footprintSqft,
+      pitchRatio: pitchRise / 12,
+      reasoning: `MS Buildings polygon rejected by vision (${validation}). ${pitchReason}`,
+      durationMs: Date.now() - start,
+      errorMessage: `polygon validation: ${validation}`,
+      raw: { hit, validation, pitchRise, pitchReason },
     };
   }
 
@@ -100,9 +121,9 @@ export async function footprintMSBuildings(args: {
     totalSqft,
     footprintSqft: Math.round(hit.footprintSqft),
     pitchRatio: pitchRise / 12,
-    reasoning: `MS Buildings polygon (${hit.footprintM2.toFixed(0)}m², centroid ${hit.centroidDistM.toFixed(1)}m from address) × pitch ${pitchRise}:12 (${mult.toFixed(3)}). ${pitchReason}`,
+    reasoning: `MS Buildings polygon (${hit.footprintM2.toFixed(0)}m², ${hit.centroidDistM.toFixed(1)}m from address) ${validation === 'yes' ? '✓' : '~'} × pitch ${pitchRise}:12 (${mult.toFixed(3)}). ${pitchReason}`,
     durationMs: Date.now() - start,
-    pitchSource: 'vision',
-    raw: { hit, pitchRise, pitchReason },
+    validation,
+    raw: { hit, validation, pitchRise, pitchReason },
   };
 }

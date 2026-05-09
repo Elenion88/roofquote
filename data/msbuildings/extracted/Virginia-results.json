@@ -1,0 +1,115 @@
+[
+  {
+    "id": "test-newport-news-va",
+    "address": "1261 20th Street, Newport News, VA 23607",
+    "lat": 36.9845554,
+    "lng": -76.4016532,
+    "kind": "test",
+    "msbuildings": {
+      "centroidDist_m": 2.01,
+      "footprint_m2": 550.32,
+      "footprint_sqft": 5923.6,
+      "polygon_lonlat": [
+        [
+          -76.401509,
+          36.984519
+        ],
+        [
+          -76.401617,
+          36.984721
+        ],
+        [
+          -76.401887,
+          36.984629
+        ],
+        [
+          -76.401817,
+          36.984499
+        ],
+        [
+          -76.401715,
+          36.984534
+        ],
+        [
+          -76.401677,
+          36.984462
+        ],
+        [
+          -76.401509,
+          36.984519
+        ]
+      ],
+      "n_candidates": 131
+    }
+  },
+  {
+    "id": "nb-newport-news-va-0",
+    "address": "1245 21st St, Newport News, VA 23607, USA",
+    "lat": 36.984989685092025,
+    "lng": -76.40265096091426,
+    "kind": "neighbor",
+    "msbuildings": {
+      "centroidDist_m": 7.88,
+      "footprint_m2": 87.5,
+      "footprint_sqft": 941.8,
+      "polygon_lonlat": [
+        [
+          -76.40252,
+          36.984921
+        ],
+        [
+          -76.402587,
+          36.985035
+        ],
+        [
+          -76.402651,
+          36.985011
+        ],
+        [
+          -76.402583,
+          36.984897
+        ],
+        [
+          -76.40252,
+          36.984921
+        ]
+      ],
+      "n_candidates": 177
+    }
+  },
+  {
+    "id": "nb-newport-news-va-1",
+    "address": "1251 21st St, Newport News, VA 23607, USA",
+    "lat": 36.985129472458425,
+    "lng": -76.40250319591115,
+    "kind": "neighbor",
+    "msbuildings": {
+      "centroidDist_m": 15.03,
+      "footprint_m2": 93.58,
+      "footprint_sqft": 1007.3,
+      "polygon_lonlat": [
+        [
+          -76.402423,
+          36.984966
+        ],
+        [
+          -76.402343,
+          36.984988
+        ],
+        [
+          -76.402389,
+          36.985094
+        ],
+        [
+          -76.402469,
+          36.985071
+        ],
+        [
+          -76.402423,
+          36.984966
+        ]
+      ],
+      "n_candidates": 170
+    }
+  }
+]

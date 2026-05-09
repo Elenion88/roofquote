@@ -42,6 +42,9 @@ export async function runQuote(address: string, opts: { withPolygon?: boolean; w
     pngBytes: z20Tile.pngBytes,
     lat: location.lat,
     lng: location.lng,
+    zoom: 20,
+    metersPerPixel: z20Tile.metersPerPixelGround,
+    sizePx: z20Tile.imageSize.width,
   });
 
   const consensusJobs = tiles.map(({ zoom, tile }) =>
