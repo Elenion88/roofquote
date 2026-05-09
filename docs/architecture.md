@@ -34,7 +34,7 @@
    │                                                              │
    │   • FastAPI service on :8765                                 │
    │   • SAM 2 (sam2.1_hiera_large)         — segmentation        │
-   │   • Qwen2.5-VL 7B (via Ollama)         — pitch detection     │
+   │   • Qwen2.5-VL 3B (via Ollama)         — pitch detection     │
    │                                                              │
    │   Endpoints:                                                 │
    │     POST /segment          — building mask + per-plane masks │
@@ -82,7 +82,7 @@ Wall-clock: 25–35s. The SAM 2 segment + Qwen pitch calls share the bottleneck 
 | Image compositing | sharp (server-side SVG → PNG overlay rendering) |
 | Map tiles + geocoding | Google Static Maps + Google Geocoding |
 | Segmentation | SAM 2 (Apache 2.0), CUDA, RTX 3090 |
-| Pitch detection | Qwen2.5-VL 7B via Ollama (Apache 2.0), local |
+| Pitch detection | Qwen2.5-VL 3B via Ollama (Apache 2.0), local |
 | Estimate generation | Claude Opus 4.7 via OpenRouter |
 | Building polygons | Microsoft Open Buildings (ODbL), pre-extracted |
 | Hosting | reef.tailnet (orchestration) + cachy-tower (GPU), Cloudflare Tunnel for ingress |

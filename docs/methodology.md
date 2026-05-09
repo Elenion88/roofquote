@@ -21,7 +21,7 @@ address
   │                                          ┌────────┴────────────────────────────┐
   │                                          │  cachy-tower (RTX 3090)             │
   │                                          │   • SAM 2  (Meta, Apache 2.0)       │
-  │                                          │   • Qwen2.5-VL 7B  (via ollama)     │
+  │                                          │   • Qwen2.5-VL 3B  (via ollama)     │
   │                                          └─────────────────────────────────────┘
   │                                                   ↓
   │                                  Three methods run in parallel:
@@ -47,7 +47,7 @@ The fix:
 1. **Footprint from open data, computed by us.** Microsoft Open Buildings provides the polygon; we project to local meters and shoelace the area. Deterministic, no LLM in the geometry path.
 2. **Pitch from a small categorical decision.** Pitch is one of ~6 common values (3:12 / 4:12 / 6:12 / 8:12 / 10:12 / 12:12). LLMs can do that; they can't measure pixels.
 3. **SAM 2 for courtyards.** When a residential building wraps around a courtyard, the MS polygon includes the courtyard. SAM 2's per-plane segmentation natively excludes it — there's no roof inside an open courtyard for SAM 2 to find a plane for. When the SAM 2 plane sum is meaningfully smaller than the MS polygon (70–90% ratio), we override to the SAM 2 number.
-4. **Local models throughout.** SAM 2 (Apache 2.0) and Qwen2.5-VL 7B (Apache 2.0) run on a homelab 3090. The measurement path has zero commercial LLM API calls.
+4. **Local models throughout.** SAM 2 (Apache 2.0) and Qwen2.5-VL 3B (Apache 2.0) run on a homelab 3090. The measurement path has zero commercial LLM API calls.
 
 ## Methods (all three run on every quote)
 
@@ -90,8 +90,8 @@ In preference order:
 - Runs on cachy-tower's RTX 3090 (24 GB VRAM). Tuned to ~1.4 GB peak: `points_per_side=32`, `points_per_batch=32`, `crop_n_layers=0`. Determinism: `torch.manual_seed(42)` before each `generate()`.
 - Image hash cache on the GPU service so repeated demo queries are stable.
 
-### Qwen2.5-VL 7B (Alibaba)
-- Served via local Ollama (`qwen2.5vl:7b`, Q4_K_M).
+### Qwen2.5-VL 3B (Alibaba)
+- Served via local Ollama (`qwen2.5vl:3b`, Q4_K_M).
 - Pre-warmed at FastAPI startup with `keep_alive=30m` so the first request doesn't pay cold-load cost.
 - Single threading lock + sha1-of-image cache so concurrent /pitch calls from MS and SAM 2 share the result instead of double-loading the model.
 

@@ -21,7 +21,7 @@ Address in. Customer-ready estimate out. ~30 seconds end-to-end. Fully self-host
    ┌─────────────────────────────────────────────────────────────┐
    │  COMPUTE on local RTX 3090 (cachy-tower):                  │
    │   • SAM 2 (Meta, open weights) — refines building mask    │
-   │   • Qwen2.5-VL 7B (Ollama, open weights) — pitch detection │
+   │   • Qwen2.5-VL 3B (Ollama, open weights) — pitch detection │
    └─────────────────────────────────────────────────────────────┘
      ↓
    total = footprint × √(1 + (rise/12)²)
@@ -102,7 +102,7 @@ cachy-tower/
                                        Listens on 0.0.0.0:8765 (tailscale-accessible)
   checkpoints/
     sam2.1_hiera_large.pt              SAM 2 large model (~900 MB)
-  (Qwen2.5-VL 7B served via local ollama)
+  (Qwen2.5-VL 3B served via local ollama)
 
 web/                                   React 19 + Vite + Tailwind v4 + lucide-react
 
@@ -131,7 +131,7 @@ uv pip install "sam-2 @ git+https://github.com/facebookresearch/sam2.git" \
                 fastapi uvicorn opencv-python pydantic
 mkdir -p checkpoints && cd checkpoints && \
   curl -LO https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_large.pt
-ollama pull qwen2.5vl:7b
+ollama pull qwen2.5vl:3b
 uvicorn service:app --host 0.0.0.0 --port 8765
 
 # On the orchestration host (reef):
@@ -165,6 +165,6 @@ python3 scripts/run_test_set.py
 
 Built solo, overnight, by Austin Young ([@elenion88](https://github.com/Elenion88)).
 
-Open-source models: **SAM 2** (Meta, Apache 2.0), **Qwen2.5-VL 7B** (Alibaba, Apache 2.0). Open data: **Microsoft Open Buildings** (ODbL).
+Open-source models: **SAM 2** (Meta, Apache 2.0), **Qwen2.5-VL 3B** (Alibaba, Apache 2.0). Open data: **Microsoft Open Buildings** (ODbL).
 
 Hosted on a homelab: a basement MSI laptop ("reef") for orchestration + web, a desktop with RTX 3090 ("cachy-tower") for GPU compute, all on a private tailscale network exposed to the internet via Cloudflare Tunnel.
