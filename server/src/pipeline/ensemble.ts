@@ -13,30 +13,41 @@ function median(xs: number[]): number {
 }
 
 /**
- * Production combiner — picks "consensus" methods (those eligible for the final
- * sqft number) and applies median.
+ * Ensemble combiner.
  *
- * Calibration on 29 addresses: median(opus-z19, opus-z20) achieves MAPE 25.5%,
- * bias -6.6%. This is the production combiner.
- *
- * Other (non-consensus) methods can still be in `results` for demo display.
+ * Strategy:
+ *  - If footprint_msbuildings produced a number, USE THAT as the spine.
+ *    It's deterministic geometry × LLM-derived pitch — by far the most accurate path.
+ *  - Otherwise fall back to the median of vision_direct results at z19+z20.
  */
 export function combineEnsemble(results: MethodResult[]): EnsembleResult {
-  const eligible = results.filter(
+  // Spine path: footprint_msbuildings
+  const ms = results.find(
+    (r) => r.method === 'footprint_msbuildings' && typeof r.totalSqft === 'number'
+  );
+  if (ms) {
+    return {
+      consensusSqft: Math.round(ms.totalSqft as number),
+      combiner: 'footprint(MSBuildings) × pitch(vision)',
+      inputs: [{ method: ms.method, model: ms.model, sqft: ms.totalSqft }],
+    };
+  }
+
+  // Fallback path: vision_direct median(z19, z20)
+  const fallback = results.filter(
     (r) =>
       r.method === 'vision_direct:measured' &&
       r.model === 'anthropic/claude-opus-4-7' &&
-      r.totalSqft != null &&
       typeof r.totalSqft === 'number' &&
       (r.zoom === 19 || r.zoom === 20)
   );
-  const sqfts = eligible.map((r) => r.totalSqft as number);
+  const sqfts = fallback.map((r) => r.totalSqft as number);
   if (!sqfts.length) {
-    return { consensusSqft: null, combiner: 'median(opus-z19, opus-z20)', inputs: [] };
+    return { consensusSqft: null, combiner: 'no eligible methods', inputs: [] };
   }
   return {
     consensusSqft: Math.round(median(sqfts)),
-    combiner: 'median(opus-z19, opus-z20)',
-    inputs: eligible.map((r) => ({ method: r.method, model: r.model, zoom: r.zoom, sqft: r.totalSqft })),
+    combiner: 'fallback: median(vision opus z19, z20)',
+    inputs: fallback.map((r) => ({ method: r.method, model: r.model, zoom: r.zoom, sqft: r.totalSqft })),
   };
 }

@@ -39,3 +39,63 @@ export function isReasonablePolygon(poly: PixelPolygon, sizePx: number): boolean
   }
   return true;
 }
+
+/* ─── Lat/Lng polygon area ─────────────────────────────────────────────── */
+
+export type LonLatPoint = [number, number]; // [lng, lat]
+export type LonLatPolygon = LonLatPoint[];
+
+/**
+ * Polygon area in square meters using equal-area projection at the polygon's
+ * centroid latitude (accurate to <0.01% for residential-sized buildings).
+ */
+export function polygonAreaM2LonLat(coords: LonLatPolygon): number {
+  if (coords.length < 3) return 0;
+  let sumLat = 0;
+  for (const [, lat] of coords) sumLat += lat;
+  const lat0 = sumLat / coords.length;
+  const R = 6371000;
+  const cosLat = Math.cos((lat0 * Math.PI) / 180);
+  const pts: [number, number][] = coords.map(([lon, lat]) => [
+    R * (lon * Math.PI) / 180 * cosLat,
+    R * (lat * Math.PI) / 180,
+  ]);
+  let s = 0;
+  for (let i = 0; i < pts.length; i++) {
+    const [x1, y1] = pts[i];
+    const [x2, y2] = pts[(i + 1) % pts.length];
+    s += x1 * y2 - x2 * y1;
+  }
+  return Math.abs(s) / 2;
+}
+
+/** Haversine distance in meters between two lat/lng points. */
+export function haversineMeters(lat1: number, lng1: number, lat2: number, lng2: number): number {
+  const R = 6371000;
+  const p1 = (lat1 * Math.PI) / 180;
+  const p2 = (lat2 * Math.PI) / 180;
+  const dp = ((lat2 - lat1) * Math.PI) / 180;
+  const dl = ((lng2 - lng1) * Math.PI) / 180;
+  const a = Math.sin(dp / 2) ** 2 + Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+}
+
+/** Project lat/lng polygon to (x_px, y_px) on a Static Maps tile. */
+export function lonLatToTilePixels(
+  coords: LonLatPolygon,
+  centerLat: number,
+  centerLng: number,
+  metersPerPixel: number,
+  imageWidthPx: number,
+  imageHeightPx: number,
+): [number, number][] {
+  const R = 6371000;
+  const cosLat = Math.cos((centerLat * Math.PI) / 180);
+  return coords.map(([lon, lat]) => {
+    const dx_m = R * ((lon - centerLng) * Math.PI) / 180 * cosLat;
+    const dy_m = R * ((lat - centerLat) * Math.PI) / 180;
+    const dx_px = dx_m / metersPerPixel;
+    const dy_px = -dy_m / metersPerPixel; // y inverted (north is up in image but image y grows down)
+    return [imageWidthPx / 2 + dx_px, imageHeightPx / 2 + dy_px];
+  });
+}

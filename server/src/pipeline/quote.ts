@@ -2,6 +2,8 @@ import { geocode } from '../lib/geocode.ts';
 import { fetchStaticMap } from '../lib/staticmap.ts';
 import { saveArtifact, slugify } from '../lib/artifacts.ts';
 import { visionDirect } from './methods/vision_direct.ts';
+import { footprintMSBuildings } from './methods/footprint_msbuildings.ts';
+import { lookupPolygon } from '../lib/msbuildings.ts';
 import { visionPolygon } from './methods/vision_polygon.ts';
 import { combineEnsemble } from './ensemble.ts';
 import { generateEstimate, stateFromFormatted } from './estimate.ts';
@@ -34,6 +36,14 @@ export async function runQuote(address: string, opts: { withPolygon?: boolean; w
   );
 
   // ─ Run vision_direct (opus, measured) at each zoom in parallel ──────────
+  // Try MS Buildings primary path (deterministic footprint + vision pitch)
+  const z20Tile = tiles.find((t) => t.zoom === 20)!.tile;
+  const msbuildingsJob = footprintMSBuildings({
+    pngBytes: z20Tile.pngBytes,
+    lat: location.lat,
+    lng: location.lng,
+  });
+
   const consensusJobs = tiles.map(({ zoom, tile }) =>
     visionDirect({
       pngBytes: tile.pngBytes,
@@ -81,12 +91,13 @@ export async function runQuote(address: string, opts: { withPolygon?: boolean; w
     );
   }
 
-  const [consensus, demos, polys] = await Promise.all([
+  const [consensus, demos, polys, ms] = await Promise.all([
     Promise.all(consensusJobs),
     Promise.all(demoJobs),
     Promise.all(polygonJobs),
+    msbuildingsJob,
   ]);
-  const results = [...consensus, ...demos, ...polys];
+  const results = [ms, ...consensus, ...demos, ...polys];
 
   for (const r of results) {
     saveArtifact(slug, `result-${r.method.replace(/[:/]/g, '_')}-${r.model?.replace(/[:/]/g, '_')}-z${r.zoom}.json`, r);
