@@ -21,13 +21,16 @@ type Variant = {
 };
 
 const VARIANTS: Variant[] = [
-  { id: 'opus-z20-default',  model: 'anthropic/claude-opus-4-7',     zoom: 20, promptVariant: 'default' },
-  { id: 'opus-z20-careful',  model: 'anthropic/claude-opus-4-7',     zoom: 20, promptVariant: 'careful' },
-  { id: 'opus-z20-measured', model: 'anthropic/claude-opus-4-7',     zoom: 20, promptVariant: 'measured' },
-  { id: 'opus-z19-measured', model: 'anthropic/claude-opus-4-7',     zoom: 19, promptVariant: 'measured' },
-  { id: 'sonnet-z20-measured', model: 'anthropic/claude-sonnet-4-6', zoom: 20, promptVariant: 'measured' },
-  { id: 'gemini-z20-measured', model: 'google/gemini-2.5-pro',       zoom: 20, promptVariant: 'measured' },
-  { id: 'gpt4o-z20-measured', model: 'openai/gpt-4o',               zoom: 20, promptVariant: 'measured' },
+  // Already-good baseline
+  { id: "opus-z19-measured",   model: "anthropic/claude-opus-4-7",     zoom: 19, promptVariant: "measured" },
+  // Multi-zoom variants
+  { id: "opus-z18-measured",   model: "anthropic/claude-opus-4-7",     zoom: 18, promptVariant: "measured" },
+  { id: "opus-z20-measured",   model: "anthropic/claude-opus-4-7",     zoom: 20, promptVariant: "measured" },
+  { id: "opus-z21-measured",   model: "anthropic/claude-opus-4-7",     zoom: 21, promptVariant: "measured" },
+  // Multi-model at z19
+  { id: "gpt4o-z19-measured",  model: "openai/gpt-4o",                zoom: 19, promptVariant: "measured" },
+  { id: "gemini-z19-measured", model: "google/gemini-2.5-pro",        zoom: 19, promptVariant: "measured" },
+  { id: "sonnet-z19-measured", model: "anthropic/claude-sonnet-4-6",  zoom: 19, promptVariant: "measured" },
 ];
 
 const TILE_CACHE = '/home/kokomo/dev/roofquote/eval/tile-cache';

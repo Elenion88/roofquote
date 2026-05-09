@@ -17,6 +17,7 @@ export type QuoteRun = {
   location: { lat: number; lng: number };
   results: MethodResult[];
   consensusSqft: number | null;
+  combiner?: string;
   startedAt: string;
   finishedAt: string;
 };

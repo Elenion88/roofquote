@@ -1,0 +1,265 @@
+[
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "ex-humble-tx",
+    "totalSqft": 7206,
+    "oracleSqft": 2393,
+    "pctErrorVsOracle": 201.12829084830756,
+    "pitchRatio": 0.5,
+    "durationMs": 15161
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "ex-spring-tx",
+    "totalSqft": 6041,
+    "oracleSqft": 4343.5,
+    "pctErrorVsOracle": 39.08138597904915,
+    "pitchRatio": 0.5,
+    "durationMs": 15293
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "ex-cape-coral-fl",
+    "totalSqft": 2857,
+    "oracleSqft": 2884,
+    "pctErrorVsOracle": -0.9361997226074895,
+    "pitchRatio": 0.5,
+    "durationMs": 15953
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "ex-orland-park-il",
+    "totalSqft": 4172,
+    "oracleSqft": 2962.5,
+    "pctErrorVsOracle": 40.82700421940928,
+    "pitchRatio": 0.5,
+    "durationMs": 14810
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "ex-nixa-mo",
+    "totalSqft": 2577,
+    "oracleSqft": 3043.5,
+    "pctErrorVsOracle": -15.327747658945293,
+    "pitchRatio": 0.5,
+    "durationMs": 11262
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "test-thornton-co",
+    "totalSqft": 2907,
+    "oracleSqft": 2080.8,
+    "pctErrorVsOracle": 39.70588235294116,
+    "pitchRatio": 0.5,
+    "durationMs": 13767
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "test-springfield-mo-1",
+    "totalSqft": 4057,
+    "oracleSqft": 2756.8,
+    "pctErrorVsOracle": 47.16337782936737,
+    "pitchRatio": 0.5,
+    "durationMs": 13291
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "test-houston-tx",
+    "totalSqft": 6284,
+    "oracleSqft": 4186.2,
+    "pctErrorVsOracle": 50.11227366107688,
+    "pitchRatio": 0.5,
+    "durationMs": 13000
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "test-springfield-mo-2",
+    "totalSqft": 4259,
+    "oracleSqft": 5566.1,
+    "pctErrorVsOracle": -23.48322883167748,
+    "pitchRatio": 0.5,
+    "durationMs": 7158
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "test-newport-news-va",
+    "totalSqft": 8078,
+    "oracleSqft": 6117.8,
+    "pctErrorVsOracle": 32.04092974598712,
+    "pitchRatio": 0.5,
+    "durationMs": 12303
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-humble-tx-1",
+    "totalSqft": 4923,
+    "oracleSqft": 1434.7,
+    "pctErrorVsOracle": 243.13793824492925,
+    "pitchRatio": 0.5,
+    "durationMs": 12048
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-spring-tx-0",
+    "totalSqft": 10306,
+    "oracleSqft": 8319.7,
+    "pctErrorVsOracle": 23.874658942029146,
+    "pitchRatio": 0.6666666666666666,
+    "durationMs": 14905
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-spring-tx-1",
+    "totalSqft": 5068,
+    "oracleSqft": 4436.5,
+    "pctErrorVsOracle": 14.234193621097713,
+    "pitchRatio": 0.5,
+    "durationMs": 10812
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-cape-coral-fl-0",
+    "totalSqft": 3647,
+    "oracleSqft": 2773.7,
+    "pctErrorVsOracle": 31.48502000937377,
+    "pitchRatio": 0.5,
+    "durationMs": 12611
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-cape-coral-fl-1",
+    "totalSqft": 4427,
+    "oracleSqft": 3017,
+    "pctErrorVsOracle": 46.73516738481936,
+    "pitchRatio": 0.5,
+    "durationMs": 12110
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-orland-park-il-0",
+    "totalSqft": 4065,
+    "oracleSqft": 3250.1,
+    "pctErrorVsOracle": 25.0730746746254,
+    "pitchRatio": 0.5,
+    "durationMs": 10633
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-orland-park-il-1",
+    "totalSqft": 3360,
+    "oracleSqft": 3077.9,
+    "pctErrorVsOracle": 9.165340004548552,
+    "pitchRatio": 0.5,
+    "durationMs": 10862
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-nixa-mo-0",
+    "totalSqft": 4681,
+    "oracleSqft": 3543.5,
+    "pctErrorVsOracle": 32.101030055030336,
+    "pitchRatio": 0.5,
+    "durationMs": 10183
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-nixa-mo-1",
+    "totalSqft": 4960,
+    "oracleSqft": 3639.3,
+    "pctErrorVsOracle": 36.28994586871101,
+    "pitchRatio": 0.5,
+    "durationMs": 10691
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-thornton-co-0",
+    "totalSqft": 5753,
+    "oracleSqft": 5299.1,
+    "pctErrorVsOracle": 8.56560548017587,
+    "pitchRatio": 0.5,
+    "durationMs": 11163
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-thornton-co-1",
+    "totalSqft": 0,
+    "oracleSqft": 2587.1,
+    "pctErrorVsOracle": -100,
+    "pitchRatio": 0.5,
+    "durationMs": 11534
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-springfield-mo-1-0",
+    "totalSqft": 0,
+    "oracleSqft": 1008.2,
+    "pctErrorVsOracle": -100,
+    "pitchRatio": 0.5,
+    "durationMs": 10999
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-springfield-mo-1-1",
+    "totalSqft": null,
+    "oracleSqft": 2812.1,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 13322,
+    "errorMessage": "invalid polygon (2 points)"
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-houston-tx-0",
+    "totalSqft": 14014,
+    "oracleSqft": 5513,
+    "pctErrorVsOracle": 154.19916560856157,
+    "pitchRatio": 0.6666666666666666,
+    "durationMs": 12574
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-houston-tx-1",
+    "totalSqft": null,
+    "oracleSqft": 4276.4,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 11268,
+    "errorMessage": "invalid polygon (0 points)"
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-springfield-mo-2-0",
+    "totalSqft": 6057,
+    "oracleSqft": 5721.4,
+    "pctErrorVsOracle": 5.8656972069773206,
+    "pitchRatio": 0.6666666666666666,
+    "durationMs": 8468
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-springfield-mo-2-1",
+    "totalSqft": 5300,
+    "oracleSqft": 4589.2,
+    "pctErrorVsOracle": 15.488538307330257,
+    "pitchRatio": 0.6666666666666666,
+    "durationMs": 10906
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-newport-news-va-0",
+    "totalSqft": 2375,
+    "oracleSqft": 1097.2,
+    "pctErrorVsOracle": 116.46008020415601,
+    "pitchRatio": 0.5,
+    "durationMs": 15341
+  },
+  {
+    "variantId": "polygon-opus-z20",
+    "recordId": "nb-newport-news-va-1",
+    "totalSqft": 3088,
+    "oracleSqft": 1099,
+    "pctErrorVsOracle": 180.98271155595998,
+    "pitchRatio": 0.5,
+    "durationMs": 12452
+  }
+]

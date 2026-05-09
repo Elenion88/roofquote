@@ -1,4 +1,5 @@
 import { openrouterChat, pngToDataUrl } from '../../lib/openrouter.ts';
+import { extractJson } from '../../lib/json.ts';
 import type { MethodResult } from '../types.ts';
 
 export type VisionDirectVariant = {
@@ -110,7 +111,7 @@ export async function visionDirect(args: {
       ],
     });
     const text = r.choices[0]?.message?.content ?? '';
-    const json = JSON.parse(text);
+    const json = extractJson<any>(text);
     const pm = String(json.pitch ?? '6:12').match(/^(\d+):12$/);
     const pitchRatio = pm ? parseInt(pm[1], 10) / 12 : 0.5;
     return {

@@ -1,1605 +1,1365 @@
 [
   {
-    "variantId": "opus-z20-careful",
+    "variantId": "opus-z18-measured",
     "recordId": "ex-humble-tx",
-    "totalSqft": 3240,
-    "oracleSqft": 2393,
-    "pctErrorVsOracle": 35.39490179690765,
-    "pitchRatio": 0.5,
-    "durationMs": 14729
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "ex-spring-tx",
-    "totalSqft": 3464,
-    "oracleSqft": 4343.5,
-    "pctErrorVsOracle": -20.248647404167148,
-    "pitchRatio": 0.5,
-    "durationMs": 13468
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "ex-cape-coral-fl",
     "totalSqft": 2450,
-    "oracleSqft": 2884,
-    "pctErrorVsOracle": -15.048543689320388,
-    "pitchRatio": 0.5,
-    "durationMs": 13615
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "ex-orland-park-il",
-    "totalSqft": 2906,
-    "oracleSqft": 2962.5,
-    "pctErrorVsOracle": -1.9071729957805907,
-    "pitchRatio": 0.5,
-    "durationMs": 13410
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "ex-nixa-mo",
-    "totalSqft": 2795,
-    "oracleSqft": 3043.5,
-    "pctErrorVsOracle": -8.164941678988006,
-    "pitchRatio": 0.5,
-    "durationMs": 13638
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "test-thornton-co",
-    "totalSqft": 2460,
-    "oracleSqft": 2080.8,
-    "pctErrorVsOracle": 18.223760092272194,
-    "pitchRatio": 0.5,
-    "durationMs": 14737
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "test-springfield-mo-1",
-    "totalSqft": 3243,
-    "oracleSqft": 2756.8,
-    "pctErrorVsOracle": 17.636390017411486,
-    "pitchRatio": 0.5,
-    "durationMs": 14134
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "test-houston-tx",
-    "totalSqft": 3642,
-    "oracleSqft": 4186.2,
-    "pctErrorVsOracle": -12.999856671922025,
-    "pitchRatio": 0.5,
-    "durationMs": 13761
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "test-springfield-mo-2",
-    "totalSqft": 3410,
-    "oracleSqft": 5566.1,
-    "pctErrorVsOracle": -38.73627854332477,
-    "pitchRatio": 0.5,
-    "durationMs": 10380
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "test-newport-news-va",
-    "totalSqft": 3150,
-    "oracleSqft": 6117.8,
-    "pctErrorVsOracle": -48.51090261205008,
-    "pitchRatio": 0.5,
-    "durationMs": 11855
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-humble-tx-1",
-    "totalSqft": 2350,
-    "oracleSqft": 1434.7,
-    "pctErrorVsOracle": 63.79730954206454,
-    "pitchRatio": 0.5,
-    "durationMs": 10918
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-spring-tx-0",
-    "totalSqft": 5590,
-    "oracleSqft": 8319.7,
-    "pctErrorVsOracle": -32.810077286440624,
-    "pitchRatio": 0.6666666666666666,
-    "durationMs": 11853
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-spring-tx-1",
-    "totalSqft": 2750,
-    "oracleSqft": 4436.5,
-    "pctErrorVsOracle": -38.01420038318494,
-    "pitchRatio": 0.5,
-    "durationMs": 8816
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-cape-coral-fl-0",
-    "totalSqft": 2460,
-    "oracleSqft": 2773.7,
-    "pctErrorVsOracle": -11.309802790496443,
-    "pitchRatio": 0.5,
-    "durationMs": 11988
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-cape-coral-fl-1",
-    "totalSqft": 2850,
-    "oracleSqft": 3017,
-    "pctErrorVsOracle": -5.535299966854492,
-    "pitchRatio": 0.5,
-    "durationMs": 11622
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-orland-park-il-0",
-    "totalSqft": 3120,
-    "oracleSqft": 3250.1,
-    "pctErrorVsOracle": -4.002953755269066,
-    "pitchRatio": 0.5,
-    "durationMs": 10977
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-orland-park-il-1",
-    "totalSqft": 2570,
-    "oracleSqft": 3077.9,
-    "pctErrorVsOracle": -16.501510770330423,
-    "pitchRatio": 0.5,
-    "durationMs": 6961
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-nixa-mo-0",
-    "totalSqft": 2906,
-    "oracleSqft": 3543.5,
-    "pctErrorVsOracle": -17.990687173698323,
-    "pitchRatio": 0.5,
-    "durationMs": 9558
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-nixa-mo-1",
-    "totalSqft": 2710,
-    "oracleSqft": 3639.3,
-    "pctErrorVsOracle": -25.535130382216366,
-    "pitchRatio": 0.5,
-    "durationMs": 9849
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-thornton-co-0",
-    "totalSqft": 2460,
-    "oracleSqft": 5299.1,
-    "pctErrorVsOracle": -53.57702251325696,
-    "pitchRatio": 0.5,
-    "durationMs": 10653
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-thornton-co-1",
-    "totalSqft": 0,
-    "oracleSqft": 2587.1,
-    "pctErrorVsOracle": -100,
-    "pitchRatio": 0.5,
-    "durationMs": 9799
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-springfield-mo-1-0",
-    "totalSqft": 1687,
-    "oracleSqft": 1008.2,
-    "pctErrorVsOracle": 67.32791112874429,
-    "pitchRatio": 0.5,
-    "durationMs": 10954
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-springfield-mo-1-1",
-    "totalSqft": 2460,
-    "oracleSqft": 2812.1,
-    "pctErrorVsOracle": -12.520891860175668,
-    "pitchRatio": 0.5,
-    "durationMs": 10921
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-houston-tx-0",
-    "totalSqft": 5550,
-    "oracleSqft": 5513,
-    "pctErrorVsOracle": 0.6711409395973155,
-    "pitchRatio": 0.6666666666666666,
-    "durationMs": 10509
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-houston-tx-1",
-    "totalSqft": 0,
-    "oracleSqft": 4276.4,
-    "pctErrorVsOracle": -100,
-    "pitchRatio": 0.5,
-    "durationMs": 8953
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-springfield-mo-2-0",
-    "totalSqft": 4710,
-    "oracleSqft": 5721.4,
-    "pctErrorVsOracle": -17.677491523053792,
-    "pitchRatio": 0.5,
-    "durationMs": 13783
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-springfield-mo-2-1",
-    "totalSqft": 4620,
-    "oracleSqft": 4589.2,
-    "pctErrorVsOracle": 0.6711409395973195,
-    "pitchRatio": 0.6666666666666666,
-    "durationMs": 12403
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-newport-news-va-0",
-    "totalSqft": 1554,
-    "oracleSqft": 1097.2,
-    "pctErrorVsOracle": 41.63324826831935,
-    "pitchRatio": 0.5,
-    "durationMs": 13350
-  },
-  {
-    "variantId": "opus-z20-careful",
-    "recordId": "nb-newport-news-va-1",
-    "totalSqft": 1850,
-    "oracleSqft": 1099,
-    "pctErrorVsOracle": 68.33484986351228,
-    "pitchRatio": 0.5,
-    "durationMs": 13233
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "ex-humble-tx",
-    "totalSqft": 3400,
     "oracleSqft": 2393,
-    "pctErrorVsOracle": 42.081069786878395,
+    "pctErrorVsOracle": 2.381947346427079,
     "pitchRatio": 0.5,
-    "durationMs": 12898
+    "durationMs": 17877
   },
   {
-    "variantId": "opus-z20-measured",
+    "variantId": "opus-z18-measured",
     "recordId": "ex-spring-tx",
-    "totalSqft": 3300,
+    "totalSqft": 2400,
     "oracleSqft": 4343.5,
-    "pctErrorVsOracle": -24.02440428226085,
+    "pctErrorVsOracle": -44.745021296189705,
     "pitchRatio": 0.5,
-    "durationMs": 12222
+    "durationMs": 17010
   },
   {
-    "variantId": "opus-z20-measured",
+    "variantId": "opus-z18-measured",
     "recordId": "ex-cape-coral-fl",
-    "totalSqft": 2650,
-    "oracleSqft": 2884,
-    "pctErrorVsOracle": -8.11373092926491,
-    "pitchRatio": 0.5,
-    "durationMs": 12236
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "ex-orland-park-il",
-    "totalSqft": 2850,
-    "oracleSqft": 2962.5,
-    "pctErrorVsOracle": -3.79746835443038,
-    "pitchRatio": 0.5,
-    "durationMs": 12128
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "ex-nixa-mo",
-    "totalSqft": 2850,
-    "oracleSqft": 3043.5,
-    "pctErrorVsOracle": -6.3578117299162145,
-    "pitchRatio": 0.5,
-    "durationMs": 13209
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "test-thornton-co",
     "totalSqft": 2350,
-    "oracleSqft": 2080.8,
-    "pctErrorVsOracle": 12.937331795463272,
-    "pitchRatio": 0.5,
-    "durationMs": 13636
+    "oracleSqft": 2884,
+    "pctErrorVsOracle": -18.51595006934813,
+    "pitchRatio": 0.4166666666666667,
+    "durationMs": 15954
   },
   {
-    "variantId": "opus-z20-measured",
-    "recordId": "test-springfield-mo-1",
-    "totalSqft": 3350,
-    "oracleSqft": 2756.8,
-    "pctErrorVsOracle": 21.517701683110847,
-    "pitchRatio": 0.5,
-    "durationMs": 13606
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "test-houston-tx",
-    "totalSqft": 3600,
-    "oracleSqft": 4186.2,
-    "pctErrorVsOracle": -14.003153217715347,
-    "pitchRatio": 0.5,
-    "durationMs": 13944
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "test-springfield-mo-2",
-    "totalSqft": 3850,
-    "oracleSqft": 5566.1,
-    "pctErrorVsOracle": -30.831282226334423,
-    "pitchRatio": 0.5,
-    "durationMs": 11458
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "test-newport-news-va",
-    "totalSqft": 3850,
-    "oracleSqft": 6117.8,
-    "pctErrorVsOracle": -37.06888097028344,
-    "pitchRatio": 0.5,
-    "durationMs": 12487
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-humble-tx-1",
+    "variantId": "opus-z18-measured",
+    "recordId": "ex-orland-park-il",
     "totalSqft": 2450,
-    "oracleSqft": 1434.7,
-    "pctErrorVsOracle": 70.76740782045027,
-    "pitchRatio": 0.5,
-    "durationMs": 11973
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-spring-tx-0",
-    "totalSqft": 5400,
-    "oracleSqft": 8319.7,
-    "pctErrorVsOracle": -35.0938134788514,
-    "pitchRatio": 0.6666666666666666,
-    "durationMs": 11479
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-spring-tx-1",
-    "totalSqft": 2850,
-    "oracleSqft": 4436.5,
-    "pctErrorVsOracle": -35.76017130620985,
-    "pitchRatio": 0.5,
-    "durationMs": 8930
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-cape-coral-fl-0",
-    "totalSqft": 2850,
-    "oracleSqft": 2773.7,
-    "pctErrorVsOracle": 2.7508382305224135,
-    "pitchRatio": 0.5,
-    "durationMs": 11696
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-cape-coral-fl-1",
-    "totalSqft": 2850,
-    "oracleSqft": 3017,
-    "pctErrorVsOracle": -5.535299966854492,
-    "pitchRatio": 0.5,
-    "durationMs": 11163
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-orland-park-il-0",
-    "totalSqft": 3100,
-    "oracleSqft": 3250.1,
-    "pctErrorVsOracle": -4.6183194363250335,
-    "pitchRatio": 0.5,
-    "durationMs": 10686
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-orland-park-il-1",
-    "totalSqft": 2650,
-    "oracleSqft": 3077.9,
-    "pctErrorVsOracle": -13.902336008317363,
-    "pitchRatio": 0.5,
-    "durationMs": 7048
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-nixa-mo-0",
-    "totalSqft": 3100,
-    "oracleSqft": 3543.5,
-    "pctErrorVsOracle": -12.515874135741498,
-    "pitchRatio": 0.5,
-    "durationMs": 9210
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-nixa-mo-1",
-    "totalSqft": 2650,
-    "oracleSqft": 3639.3,
-    "pctErrorVsOracle": -27.183799082241094,
-    "pitchRatio": 0.5,
-    "durationMs": 8833
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-thornton-co-0",
-    "totalSqft": 2600,
-    "oracleSqft": 5299.1,
-    "pctErrorVsOracle": -50.93506444490574,
-    "pitchRatio": 0.5,
-    "durationMs": 10995
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-thornton-co-1",
-    "totalSqft": 0,
-    "oracleSqft": 2587.1,
-    "pctErrorVsOracle": -100,
-    "pitchRatio": 0.5,
-    "durationMs": 7812
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-springfield-mo-1-0",
-    "totalSqft": 0,
-    "oracleSqft": 1008.2,
-    "pctErrorVsOracle": -100,
-    "pitchRatio": 0.5,
-    "durationMs": 13392
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-springfield-mo-1-1",
-    "totalSqft": 3200,
-    "oracleSqft": 2812.1,
-    "pctErrorVsOracle": 13.793961807901573,
-    "pitchRatio": 0.5,
-    "durationMs": 13542
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-houston-tx-0",
-    "totalSqft": 6200,
-    "oracleSqft": 5513,
-    "pctErrorVsOracle": 12.461454743333938,
-    "pitchRatio": 0.6666666666666666,
-    "durationMs": 11790
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-houston-tx-1",
-    "totalSqft": 0,
-    "oracleSqft": 4276.4,
-    "pctErrorVsOracle": -100,
-    "pitchRatio": 0.5,
-    "durationMs": 10464
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-springfield-mo-2-0",
-    "totalSqft": 4850,
-    "oracleSqft": 5721.4,
-    "pctErrorVsOracle": -15.230537980214628,
-    "pitchRatio": 0.5833333333333334,
-    "durationMs": 9493
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-springfield-mo-2-1",
-    "totalSqft": 5200,
-    "oracleSqft": 4589.2,
-    "pctErrorVsOracle": 13.309509282663651,
-    "pitchRatio": 0.6666666666666666,
-    "durationMs": 11330
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-newport-news-va-0",
-    "totalSqft": 1850,
-    "oracleSqft": 1097.2,
-    "pctErrorVsOracle": 68.61100984323733,
-    "pitchRatio": 0.5,
-    "durationMs": 12158
-  },
-  {
-    "variantId": "opus-z20-measured",
-    "recordId": "nb-newport-news-va-1",
-    "totalSqft": 1850,
-    "oracleSqft": 1099,
-    "pctErrorVsOracle": 68.33484986351228,
-    "pitchRatio": 0.5,
-    "durationMs": 12356
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "ex-humble-tx",
-    "totalSqft": 2550,
-    "oracleSqft": 2393,
-    "pctErrorVsOracle": 6.560802340158796,
-    "pitchRatio": 0.5,
-    "durationMs": 16749
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "ex-spring-tx",
-    "totalSqft": 2950,
-    "oracleSqft": 4343.5,
-    "pctErrorVsOracle": -32.08242200989985,
+    "oracleSqft": 2962.5,
+    "pctErrorVsOracle": -17.29957805907173,
     "pitchRatio": 0.5,
     "durationMs": 16604
   },
   {
-    "variantId": "opus-z19-measured",
-    "recordId": "ex-cape-coral-fl",
-    "totalSqft": 2650,
-    "oracleSqft": 2884,
-    "pctErrorVsOracle": -8.11373092926491,
-    "pitchRatio": 0.5,
-    "durationMs": 16374
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "ex-orland-park-il",
-    "totalSqft": 2600,
-    "oracleSqft": 2962.5,
-    "pctErrorVsOracle": -12.236286919831224,
-    "pitchRatio": 0.5,
-    "durationMs": 16187
-  },
-  {
-    "variantId": "opus-z19-measured",
+    "variantId": "opus-z18-measured",
     "recordId": "ex-nixa-mo",
     "totalSqft": 2650,
     "oracleSqft": 3043.5,
     "pctErrorVsOracle": -12.92919336290455,
     "pitchRatio": 0.5,
-    "durationMs": 11289
+    "durationMs": 15444
   },
   {
-    "variantId": "opus-z19-measured",
-    "recordId": "test-thornton-co",
-    "totalSqft": 2600,
-    "oracleSqft": 2080.8,
-    "pctErrorVsOracle": 24.95194156093809,
-    "pitchRatio": 0.5,
-    "durationMs": 12650
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "test-springfield-mo-1",
-    "totalSqft": 2850,
-    "oracleSqft": 2756.8,
-    "pctErrorVsOracle": 3.3807312826465403,
-    "pitchRatio": 0.5,
-    "durationMs": 12805
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "test-houston-tx",
-    "totalSqft": 3850,
-    "oracleSqft": 4186.2,
-    "pctErrorVsOracle": -8.031149968945579,
-    "pitchRatio": 0.5833333333333334,
-    "durationMs": 14450
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "test-springfield-mo-2",
-    "totalSqft": 3600,
-    "oracleSqft": 5566.1,
-    "pctErrorVsOracle": -35.32275740644258,
-    "pitchRatio": 0.5,
-    "durationMs": 8417
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "test-newport-news-va",
-    "totalSqft": 2650,
-    "oracleSqft": 6117.8,
-    "pctErrorVsOracle": -56.68377521331197,
-    "pitchRatio": 0.5,
-    "durationMs": 12502
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-humble-tx-1",
-    "totalSqft": 2100,
-    "oracleSqft": 1434.7,
-    "pctErrorVsOracle": 46.372063846100225,
-    "pitchRatio": 0.5,
-    "durationMs": 12239
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-spring-tx-0",
-    "totalSqft": 7200,
-    "oracleSqft": 8319.7,
-    "pctErrorVsOracle": -13.458417971801875,
-    "pitchRatio": 0.6666666666666666,
-    "durationMs": 13508
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-spring-tx-1",
-    "totalSqft": 2950,
-    "oracleSqft": 4436.5,
-    "pctErrorVsOracle": -33.50614222923476,
-    "pitchRatio": 0.5,
-    "durationMs": 9003
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-cape-coral-fl-0",
-    "totalSqft": 2650,
-    "oracleSqft": 2773.7,
-    "pctErrorVsOracle": -4.459746908461615,
-    "pitchRatio": 0.5,
-    "durationMs": 11182
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-cape-coral-fl-1",
-    "totalSqft": 2650,
-    "oracleSqft": 3017,
-    "pctErrorVsOracle": -12.164401723566456,
-    "pitchRatio": 0.5,
-    "durationMs": 12675
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-orland-park-il-0",
-    "totalSqft": 2850,
-    "oracleSqft": 3250.1,
-    "pctErrorVsOracle": -12.310390449524627,
-    "pitchRatio": 0.5,
-    "durationMs": 12833
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-orland-park-il-1",
-    "totalSqft": 2450,
-    "oracleSqft": 3077.9,
-    "pctErrorVsOracle": -20.400272913350015,
-    "pitchRatio": 0.5,
-    "durationMs": 11300
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-nixa-mo-0",
-    "totalSqft": 2350,
-    "oracleSqft": 3543.5,
-    "pctErrorVsOracle": -33.68138845773952,
-    "pitchRatio": 0.5,
-    "durationMs": 7136
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-nixa-mo-1",
-    "totalSqft": 2950,
-    "oracleSqft": 3639.3,
-    "pctErrorVsOracle": -18.940455582117444,
-    "pitchRatio": 0.5,
-    "durationMs": 8365
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-thornton-co-0",
-    "totalSqft": 3200,
-    "oracleSqft": 5299.1,
-    "pctErrorVsOracle": -39.612387009114755,
-    "pitchRatio": 0.5,
-    "durationMs": 9317
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-thornton-co-1",
-    "totalSqft": 2950,
-    "oracleSqft": 2587.1,
-    "pctErrorVsOracle": 14.027289242781496,
-    "pitchRatio": 0.5,
-    "durationMs": 10842
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-springfield-mo-1-0",
-    "totalSqft": 2100,
-    "oracleSqft": 1008.2,
-    "pctErrorVsOracle": 108.29200555445347,
-    "pitchRatio": 0.5,
-    "durationMs": 10096
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-springfield-mo-1-1",
-    "totalSqft": 2850,
-    "oracleSqft": 2812.1,
-    "pctErrorVsOracle": 1.3477472351623376,
-    "pitchRatio": 0.5,
-    "durationMs": 8776
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-houston-tx-0",
-    "totalSqft": 3400,
-    "oracleSqft": 5513,
-    "pctErrorVsOracle": -38.32758933430075,
-    "pitchRatio": 0.5,
-    "durationMs": 8602
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-houston-tx-1",
-    "totalSqft": 4200,
-    "oracleSqft": 4276.4,
-    "pctErrorVsOracle": -1.7865494341034434,
-    "pitchRatio": 0.5833333333333334,
-    "durationMs": 9088
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-springfield-mo-2-0",
-    "totalSqft": 3600,
-    "oracleSqft": 5721.4,
-    "pctErrorVsOracle": -37.078337469850034,
-    "pitchRatio": 0.5,
-    "durationMs": 9919
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-springfield-mo-2-1",
-    "totalSqft": 3800,
-    "oracleSqft": 4589.2,
-    "pctErrorVsOracle": -17.196897062668874,
-    "pitchRatio": 0.5833333333333334,
-    "durationMs": 9672
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-newport-news-va-0",
-    "totalSqft": 2100,
-    "oracleSqft": 1097.2,
-    "pctErrorVsOracle": 91.3962814436748,
-    "pitchRatio": 0.5,
-    "durationMs": 8751
-  },
-  {
-    "variantId": "opus-z19-measured",
-    "recordId": "nb-newport-news-va-1",
-    "totalSqft": 1850,
-    "oracleSqft": 1099,
-    "pctErrorVsOracle": 68.33484986351228,
-    "pitchRatio": 0.4166666666666667,
-    "durationMs": 8421
-  },
-  {
-    "variantId": "sonnet-z20-measured",
-    "recordId": "ex-humble-tx",
-    "totalSqft": null,
-    "oracleSqft": 2393,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 11969,
-    "errorMessage": "Unexpected token '`', \"```json\n{\n\"... is not valid JSON"
-  },
-  {
-    "variantId": "sonnet-z20-measured",
-    "recordId": "ex-spring-tx",
-    "totalSqft": 3200,
-    "oracleSqft": 4343.5,
-    "pctErrorVsOracle": -26.326695061586282,
-    "pitchRatio": 0.5,
-    "durationMs": 13196
-  },
-  {
-    "variantId": "sonnet-z20-measured",
-    "recordId": "ex-cape-coral-fl",
-    "totalSqft": 2080,
-    "oracleSqft": 2884,
-    "pctErrorVsOracle": -27.877947295423024,
-    "pitchRatio": 0.3333333333333333,
-    "durationMs": 12843
-  },
-  {
-    "variantId": "sonnet-z20-measured",
-    "recordId": "ex-orland-park-il",
-    "totalSqft": null,
-    "oracleSqft": 2962.5,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 13924,
-    "errorMessage": "Unexpected token '`', \"```json\n{\n\"... is not valid JSON"
-  },
-  {
-    "variantId": "sonnet-z20-measured",
-    "recordId": "ex-nixa-mo",
-    "totalSqft": null,
-    "oracleSqft": 3043.5,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 7102,
-    "errorMessage": "Unexpected token '`', \"```json\n{\n\"... is not valid JSON"
-  },
-  {
-    "variantId": "sonnet-z20-measured",
+    "variantId": "opus-z18-measured",
     "recordId": "test-thornton-co",
     "totalSqft": 2800,
     "oracleSqft": 2080.8,
     "pctErrorVsOracle": 34.563629373317944,
-    "pitchRatio": 0.4166666666666667,
-    "durationMs": 10778
+    "pitchRatio": 0.5,
+    "durationMs": 17437
   },
   {
-    "variantId": "sonnet-z20-measured",
+    "variantId": "opus-z18-measured",
     "recordId": "test-springfield-mo-1",
-    "totalSqft": null,
+    "totalSqft": 2350,
     "oracleSqft": 2756.8,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 9997,
-    "errorMessage": "Unexpected token '`', \"```json\n{\n\"... is not valid JSON"
+    "pctErrorVsOracle": -14.756239117817765,
+    "pitchRatio": 0.5,
+    "durationMs": 17641
   },
   {
-    "variantId": "sonnet-z20-measured",
+    "variantId": "opus-z18-measured",
     "recordId": "test-houston-tx",
-    "totalSqft": 4200,
+    "totalSqft": 3600,
     "oracleSqft": 4186.2,
-    "pctErrorVsOracle": 0.3296545793320955,
+    "pctErrorVsOracle": -14.003153217715347,
     "pitchRatio": 0.5,
-    "durationMs": 13235
+    "durationMs": 17312
   },
   {
-    "variantId": "sonnet-z20-measured",
+    "variantId": "opus-z18-measured",
     "recordId": "test-springfield-mo-2",
-    "totalSqft": 4800,
+    "totalSqft": 2850,
     "oracleSqft": 5566.1,
-    "pctErrorVsOracle": -13.763676541923434,
+    "pctErrorVsOracle": -48.79718294676704,
     "pitchRatio": 0.5,
-    "durationMs": 6564
+    "durationMs": 8600
   },
   {
-    "variantId": "sonnet-z20-measured",
+    "variantId": "opus-z18-measured",
     "recordId": "test-newport-news-va",
-    "totalSqft": 8200,
+    "totalSqft": 2250,
     "oracleSqft": 6117.8,
-    "pctErrorVsOracle": 34.03511066069502,
-    "pitchRatio": 0.3333333333333333,
-    "durationMs": 10153
+    "pctErrorVsOracle": -63.22207329432149,
+    "pitchRatio": 0.5,
+    "durationMs": 14461
   },
   {
-    "variantId": "sonnet-z20-measured",
+    "variantId": "opus-z18-measured",
     "recordId": "nb-humble-tx-1",
     "totalSqft": 2350,
     "oracleSqft": 1434.7,
     "pctErrorVsOracle": 63.79730954206454,
     "pitchRatio": 0.5,
-    "durationMs": 10344
+    "durationMs": 14582
   },
   {
-    "variantId": "sonnet-z20-measured",
+    "variantId": "opus-z18-measured",
     "recordId": "nb-spring-tx-0",
-    "totalSqft": 4800,
+    "totalSqft": 5400,
     "oracleSqft": 8319.7,
-    "pctErrorVsOracle": -42.30561198120125,
-    "pitchRatio": 0.5,
-    "durationMs": 11163
+    "pctErrorVsOracle": -35.0938134788514,
+    "pitchRatio": 0.5833333333333334,
+    "durationMs": 15454
   },
   {
-    "variantId": "sonnet-z20-measured",
+    "variantId": "opus-z18-measured",
     "recordId": "nb-spring-tx-1",
-    "totalSqft": 2800,
+    "totalSqft": 2750,
     "oracleSqft": 4436.5,
-    "pctErrorVsOracle": -36.8871858446974,
+    "pctErrorVsOracle": -38.01420038318494,
     "pitchRatio": 0.5,
-    "durationMs": 11134
+    "durationMs": 11503
   },
   {
-    "variantId": "sonnet-z20-measured",
+    "variantId": "opus-z18-measured",
+    "recordId": "nb-cape-coral-fl-0",
+    "totalSqft": 2350,
+    "oracleSqft": 2773.7,
+    "pctErrorVsOracle": -15.275624616937659,
+    "pitchRatio": 0.5,
+    "durationMs": 13792
+  },
+  {
+    "variantId": "opus-z18-measured",
+    "recordId": "nb-cape-coral-fl-1",
+    "totalSqft": 2350,
+    "oracleSqft": 3017,
+    "pctErrorVsOracle": -22.108054358634405,
+    "pitchRatio": 0.5,
+    "durationMs": 15019
+  },
+  {
+    "variantId": "opus-z18-measured",
+    "recordId": "nb-orland-park-il-0",
+    "totalSqft": 2550,
+    "oracleSqft": 3250.1,
+    "pctErrorVsOracle": -21.54087566536414,
+    "pitchRatio": 0.5,
+    "durationMs": 15684
+  },
+  {
+    "variantId": "opus-z18-measured",
+    "recordId": "nb-orland-park-il-1",
+    "totalSqft": 2750,
+    "oracleSqft": 3077.9,
+    "pctErrorVsOracle": -10.653367555801035,
+    "pitchRatio": 0.5,
+    "durationMs": 14975
+  },
+  {
+    "variantId": "opus-z18-measured",
+    "recordId": "nb-nixa-mo-0",
+    "totalSqft": 2450,
+    "oracleSqft": 3543.5,
+    "pctErrorVsOracle": -30.85931988147312,
+    "pitchRatio": 0.5,
+    "durationMs": 9272
+  },
+  {
+    "variantId": "opus-z18-measured",
+    "recordId": "nb-nixa-mo-1",
+    "totalSqft": 2850,
+    "oracleSqft": 3639.3,
+    "pctErrorVsOracle": -21.688236748825325,
+    "pitchRatio": 0.5,
+    "durationMs": 12948
+  },
+  {
+    "variantId": "opus-z18-measured",
+    "recordId": "nb-thornton-co-0",
+    "totalSqft": 2600,
+    "oracleSqft": 5299.1,
+    "pctErrorVsOracle": -50.93506444490574,
+    "pitchRatio": 0.5,
+    "durationMs": 14127
+  },
+  {
+    "variantId": "opus-z18-measured",
+    "recordId": "nb-thornton-co-1",
+    "totalSqft": 2800,
+    "oracleSqft": 2587.1,
+    "pctErrorVsOracle": 8.229291484673963,
+    "pitchRatio": 0.5,
+    "durationMs": 13435
+  },
+  {
+    "variantId": "opus-z18-measured",
+    "recordId": "nb-springfield-mo-1-0",
+    "totalSqft": 2350,
+    "oracleSqft": 1008.2,
+    "pctErrorVsOracle": 133.0886728823646,
+    "pitchRatio": 0.5,
+    "durationMs": 9354
+  },
+  {
+    "variantId": "opus-z18-measured",
+    "recordId": "nb-springfield-mo-1-1",
+    "totalSqft": 2600,
+    "oracleSqft": 2812.1,
+    "pctErrorVsOracle": -7.542406031079974,
+    "pitchRatio": 0.5,
+    "durationMs": 8846
+  },
+  {
+    "variantId": "opus-z18-measured",
+    "recordId": "nb-houston-tx-0",
+    "totalSqft": 3850,
+    "oracleSqft": 5513,
+    "pctErrorVsOracle": -30.16506439325231,
+    "pitchRatio": 0.5833333333333334,
+    "durationMs": 16115
+  },
+  {
+    "variantId": "opus-z18-measured",
+    "recordId": "nb-houston-tx-1",
+    "totalSqft": 4200,
+    "oracleSqft": 4276.4,
+    "pctErrorVsOracle": -1.7865494341034434,
+    "pitchRatio": 0.5833333333333334,
+    "durationMs": 15945
+  },
+  {
+    "variantId": "opus-z18-measured",
+    "recordId": "nb-springfield-mo-2-0",
+    "totalSqft": 2850,
+    "oracleSqft": 5721.4,
+    "pctErrorVsOracle": -50.187017163631275,
+    "pitchRatio": 0.5,
+    "durationMs": 13678
+  },
+  {
+    "variantId": "opus-z18-measured",
+    "recordId": "nb-springfield-mo-2-1",
+    "totalSqft": 3200,
+    "oracleSqft": 4589.2,
+    "pctErrorVsOracle": -30.27107121066852,
+    "pitchRatio": 0.5,
+    "durationMs": 11384
+  },
+  {
+    "variantId": "opus-z18-measured",
+    "recordId": "nb-newport-news-va-0",
+    "totalSqft": 1850,
+    "oracleSqft": 1097.2,
+    "pctErrorVsOracle": 68.61100984323733,
+    "pitchRatio": 0.5,
+    "durationMs": 12679
+  },
+  {
+    "variantId": "opus-z18-measured",
+    "recordId": "nb-newport-news-va-1",
+    "totalSqft": 1750,
+    "oracleSqft": 1099,
+    "pctErrorVsOracle": 59.23566878980891,
+    "pitchRatio": 0.5,
+    "durationMs": 11454
+  },
+  {
+    "variantId": "opus-z21-measured",
+    "recordId": "ex-humble-tx",
+    "totalSqft": 3750,
+    "oracleSqft": 2393,
+    "pctErrorVsOracle": 56.70706226493941,
+    "pitchRatio": 0.5,
+    "durationMs": 16091
+  },
+  {
+    "variantId": "opus-z21-measured",
+    "recordId": "ex-spring-tx",
+    "totalSqft": 3850,
+    "oracleSqft": 4343.5,
+    "pctErrorVsOracle": -11.36180499597099,
+    "pitchRatio": 0.5833333333333334,
+    "durationMs": 15815
+  },
+  {
+    "variantId": "opus-z21-measured",
+    "recordId": "ex-cape-coral-fl",
+    "totalSqft": 2850,
+    "oracleSqft": 2884,
+    "pctErrorVsOracle": -1.1789181692094313,
+    "pitchRatio": 0.5,
+    "durationMs": 15804
+  },
+  {
+    "variantId": "opus-z21-measured",
+    "recordId": "ex-orland-park-il",
+    "totalSqft": 3150,
+    "oracleSqft": 2962.5,
+    "pctErrorVsOracle": 6.329113924050633,
+    "pitchRatio": 0.5,
+    "durationMs": 15361
+  },
+  {
+    "variantId": "opus-z21-measured",
+    "recordId": "ex-nixa-mo",
+    "totalSqft": 3450,
+    "oracleSqft": 3043.5,
+    "pctErrorVsOracle": 13.356333169048792,
+    "pitchRatio": 0.5,
+    "durationMs": 9819
+  },
+  {
+    "variantId": "opus-z21-measured",
+    "recordId": "test-thornton-co",
+    "totalSqft": 2650,
+    "oracleSqft": 2080.8,
+    "pctErrorVsOracle": 27.354863514033052,
+    "pitchRatio": 0.5,
+    "durationMs": 11522
+  },
+  {
+    "variantId": "opus-z21-measured",
+    "recordId": "test-springfield-mo-1",
+    "totalSqft": 5400,
+    "oracleSqft": 2756.8,
+    "pctErrorVsOracle": 95.87928032501449,
+    "pitchRatio": 0.5,
+    "durationMs": 11025
+  },
+  {
+    "variantId": "opus-z21-measured",
+    "recordId": "test-houston-tx",
+    "totalSqft": 4200,
+    "oracleSqft": 4186.2,
+    "pctErrorVsOracle": 0.3296545793320955,
+    "pitchRatio": 0.5,
+    "durationMs": 11631
+  },
+  {
+    "variantId": "opus-z21-measured",
+    "recordId": "test-springfield-mo-2",
+    "totalSqft": 6800,
+    "oracleSqft": 5566.1,
+    "pctErrorVsOracle": 22.1681248989418,
+    "pitchRatio": 0.5,
+    "durationMs": 6776
+  },
+  {
+    "variantId": "opus-z21-measured",
+    "recordId": "test-newport-news-va",
+    "totalSqft": 3150,
+    "oracleSqft": 6117.8,
+    "pctErrorVsOracle": -48.51090261205008,
+    "pitchRatio": 0.5,
+    "durationMs": 8847
+  },
+  {
+    "variantId": "opus-z21-measured",
+    "recordId": "nb-humble-tx-1",
+    "totalSqft": 2650,
+    "oracleSqft": 1434.7,
+    "pctErrorVsOracle": 84.70760437722171,
+    "pitchRatio": 0.5,
+    "durationMs": 9358
+  },
+  {
+    "variantId": "opus-z21-measured",
+    "recordId": "nb-spring-tx-0",
+    "totalSqft": 4200,
+    "oracleSqft": 8319.7,
+    "pctErrorVsOracle": -49.517410483551096,
+    "pitchRatio": 0.5833333333333334,
+    "durationMs": 18340
+  },
+  {
+    "variantId": "opus-z21-measured",
+    "recordId": "nb-spring-tx-1",
+    "totalSqft": 3100,
+    "oracleSqft": 4436.5,
+    "pctErrorVsOracle": -30.125098613772117,
+    "pitchRatio": 0.5,
+    "durationMs": 14171
+  },
+  {
+    "variantId": "opus-z21-measured",
     "recordId": "nb-cape-coral-fl-0",
     "totalSqft": 2850,
     "oracleSqft": 2773.7,
     "pctErrorVsOracle": 2.7508382305224135,
-    "pitchRatio": 0.4166666666666667,
-    "durationMs": 8728
+    "pitchRatio": 0.5,
+    "durationMs": 10317
   },
   {
-    "variantId": "sonnet-z20-measured",
+    "variantId": "opus-z21-measured",
     "recordId": "nb-cape-coral-fl-1",
-    "totalSqft": 2800,
+    "totalSqft": 3150,
     "oracleSqft": 3017,
-    "pctErrorVsOracle": -7.192575406032482,
-    "pitchRatio": 0.3333333333333333,
-    "durationMs": 8724
+    "pctErrorVsOracle": 4.408352668213457,
+    "pitchRatio": 0.5,
+    "durationMs": 10089
   },
   {
-    "variantId": "sonnet-z20-measured",
+    "variantId": "opus-z21-measured",
     "recordId": "nb-orland-park-il-0",
-    "totalSqft": 3200,
+    "totalSqft": 3450,
     "oracleSqft": 3250.1,
-    "pctErrorVsOracle": -1.5414910310451957,
-    "pitchRatio": 0.4166666666666667,
-    "durationMs": 6844
+    "pctErrorVsOracle": 6.150579982154398,
+    "pitchRatio": 0.5,
+    "durationMs": 7686
   },
   {
-    "variantId": "sonnet-z20-measured",
+    "variantId": "opus-z21-measured",
     "recordId": "nb-orland-park-il-1",
-    "totalSqft": 2800,
+    "totalSqft": 2600,
     "oracleSqft": 3077.9,
-    "pctErrorVsOracle": -9.028883329542872,
+    "pctErrorVsOracle": -15.526820234575526,
     "pitchRatio": 0.5,
-    "durationMs": 7858
+    "durationMs": 10630
   },
   {
-    "variantId": "sonnet-z20-measured",
+    "variantId": "opus-z21-measured",
     "recordId": "nb-nixa-mo-0",
-    "totalSqft": null,
+    "totalSqft": 3450,
     "oracleSqft": 3543.5,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 6324,
-    "errorMessage": "Unexpected token '`', \"```json\n{\n\"... is not valid JSON"
-  },
-  {
-    "variantId": "sonnet-z20-measured",
-    "recordId": "nb-nixa-mo-1",
-    "totalSqft": 2860,
-    "oracleSqft": 3639.3,
-    "pctErrorVsOracle": -21.41345863215454,
-    "pitchRatio": 0.6666666666666666,
-    "durationMs": 7027
-  },
-  {
-    "variantId": "sonnet-z20-measured",
-    "recordId": "nb-thornton-co-0",
-    "totalSqft": 6800,
-    "oracleSqft": 5299.1,
-    "pctErrorVsOracle": 28.323677605631136,
-    "pitchRatio": 0.4166666666666667,
-    "durationMs": 8058
-  },
-  {
-    "variantId": "sonnet-z20-measured",
-    "recordId": "nb-thornton-co-1",
-    "totalSqft": 0,
-    "oracleSqft": 2587.1,
-    "pctErrorVsOracle": -100,
-    "pitchRatio": 0.5,
-    "durationMs": 6782
-  },
-  {
-    "variantId": "sonnet-z20-measured",
-    "recordId": "nb-springfield-mo-1-0",
-    "totalSqft": 2100,
-    "oracleSqft": 1008.2,
-    "pctErrorVsOracle": 108.29200555445347,
-    "pitchRatio": 0.5,
-    "durationMs": 6951
-  },
-  {
-    "variantId": "sonnet-z20-measured",
-    "recordId": "nb-springfield-mo-1-1",
-    "totalSqft": 2800,
-    "oracleSqft": 2812.1,
-    "pctErrorVsOracle": -0.4302834180861245,
-    "pitchRatio": 0.4166666666666667,
-    "durationMs": 6840
-  },
-  {
-    "variantId": "sonnet-z20-measured",
-    "recordId": "nb-houston-tx-0",
-    "totalSqft": null,
-    "oracleSqft": 5513,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 8255,
-    "errorMessage": "Unexpected token '`', \"```json\n{\n\"... is not valid JSON"
-  },
-  {
-    "variantId": "sonnet-z20-measured",
-    "recordId": "nb-houston-tx-1",
-    "totalSqft": 2800,
-    "oracleSqft": 4276.4,
-    "pctErrorVsOracle": -34.524366289402295,
-    "pitchRatio": 0.5,
-    "durationMs": 7044
-  },
-  {
-    "variantId": "sonnet-z20-measured",
-    "recordId": "nb-springfield-mo-2-0",
-    "totalSqft": null,
-    "oracleSqft": 5721.4,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 10130,
-    "errorMessage": "Expected ',' or '}' after property value in JSON at position 15 (line 1 column 16)"
-  },
-  {
-    "variantId": "sonnet-z20-measured",
-    "recordId": "nb-springfield-mo-2-1",
-    "totalSqft": null,
-    "oracleSqft": 4589.2,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 6791,
-    "errorMessage": "Unexpected token '`', \"```json\n{\n\"... is not valid JSON"
-  },
-  {
-    "variantId": "sonnet-z20-measured",
-    "recordId": "nb-newport-news-va-0",
-    "totalSqft": 2080,
-    "oracleSqft": 1097.2,
-    "pctErrorVsOracle": 89.5734597156398,
-    "pitchRatio": 0.3333333333333333,
-    "durationMs": 8479
-  },
-  {
-    "variantId": "sonnet-z20-measured",
-    "recordId": "nb-newport-news-va-1",
-    "totalSqft": 1680,
-    "oracleSqft": 1099,
-    "pctErrorVsOracle": 52.86624203821656,
-    "pitchRatio": 0.4166666666666667,
-    "durationMs": 8876
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "ex-humble-tx",
-    "totalSqft": null,
-    "oracleSqft": 2393,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 19160,
-    "errorMessage": "Unexpected end of JSON input"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "ex-spring-tx",
-    "totalSqft": null,
-    "oracleSqft": 4343.5,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 15569,
-    "errorMessage": "Unterminated string in JSON at position 35 (line 3 column 13)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "ex-cape-coral-fl",
-    "totalSqft": null,
-    "oracleSqft": 2884,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 16996,
-    "errorMessage": "Unexpected end of JSON input"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "ex-orland-park-il",
-    "totalSqft": null,
-    "oracleSqft": 2962.5,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 16016,
-    "errorMessage": "Unterminated string in JSON at position 35 (line 3 column 13)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "ex-nixa-mo",
-    "totalSqft": null,
-    "oracleSqft": 3043.5,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 12790,
-    "errorMessage": "Unterminated string in JSON at position 35 (line 3 column 13)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "test-thornton-co",
-    "totalSqft": null,
-    "oracleSqft": 2080.8,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 13969,
-    "errorMessage": "Unterminated string in JSON at position 35 (line 3 column 13)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "test-springfield-mo-1",
-    "totalSqft": null,
-    "oracleSqft": 2756.8,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 13347,
-    "errorMessage": "Unterminated string in JSON at position 35 (line 3 column 13)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "test-houston-tx",
-    "totalSqft": null,
-    "oracleSqft": 4186.2,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 13271,
-    "errorMessage": "Unterminated string in JSON at position 31 (line 3 column 9)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "test-springfield-mo-2",
-    "totalSqft": null,
-    "oracleSqft": 5566.1,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 12122,
-    "errorMessage": "Unexpected end of JSON input"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "test-newport-news-va",
-    "totalSqft": null,
-    "oracleSqft": 6117.8,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 15764,
-    "errorMessage": "Unterminated string in JSON at position 26 (line 3 column 4)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-humble-tx-1",
-    "totalSqft": null,
-    "oracleSqft": 1434.7,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 15704,
-    "errorMessage": "Unexpected end of JSON input"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-spring-tx-0",
-    "totalSqft": null,
-    "oracleSqft": 8319.7,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 13993,
-    "errorMessage": "Expected double-quoted property name in JSON at position 23 (line 3 column 1)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-spring-tx-1",
-    "totalSqft": null,
-    "oracleSqft": 4436.5,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 12858,
-    "errorMessage": "Unterminated string in JSON at position 36 (line 3 column 14)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-cape-coral-fl-0",
-    "totalSqft": null,
-    "oracleSqft": 2773.7,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 15916,
-    "errorMessage": "Unexpected end of JSON input"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-cape-coral-fl-1",
-    "totalSqft": null,
-    "oracleSqft": 3017,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 15535,
-    "errorMessage": "Unterminated string in JSON at position 31 (line 3 column 9)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-orland-park-il-0",
-    "totalSqft": null,
-    "oracleSqft": 3250.1,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 14488,
-    "errorMessage": "Unterminated string in JSON at position 26 (line 3 column 4)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-orland-park-il-1",
-    "totalSqft": null,
-    "oracleSqft": 3077.9,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 11686,
-    "errorMessage": "Unterminated string in JSON at position 31 (line 3 column 9)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-nixa-mo-0",
-    "totalSqft": null,
-    "oracleSqft": 3543.5,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 12491,
-    "errorMessage": "Unexpected end of JSON input"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-nixa-mo-1",
-    "totalSqft": null,
-    "oracleSqft": 3639.3,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 12697,
-    "errorMessage": "Unterminated string in JSON at position 36 (line 3 column 14)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-thornton-co-0",
-    "totalSqft": null,
-    "oracleSqft": 5299.1,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 13289,
-    "errorMessage": "Unexpected end of JSON input"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-thornton-co-1",
-    "totalSqft": null,
-    "oracleSqft": 2587.1,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 12391,
-    "errorMessage": "Unterminated string in JSON at position 33 (line 3 column 14)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-springfield-mo-1-0",
-    "totalSqft": null,
-    "oracleSqft": 1008.2,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 13248,
-    "errorMessage": "Unterminated string in JSON at position 35 (line 3 column 13)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-springfield-mo-1-1",
-    "totalSqft": null,
-    "oracleSqft": 2812.1,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 15936,
-    "errorMessage": "Unterminated string in JSON at position 36 (line 3 column 14)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-houston-tx-0",
-    "totalSqft": null,
-    "oracleSqft": 5513,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 14996,
-    "errorMessage": "Unterminated string in JSON at position 26 (line 3 column 4)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-houston-tx-1",
-    "totalSqft": null,
-    "oracleSqft": 4276.4,
-    "pctErrorVsOracle": null,
-    "pitchRatio": 0.5,
-    "durationMs": 9928
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-springfield-mo-2-0",
-    "totalSqft": null,
-    "oracleSqft": 5721.4,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 11988,
-    "errorMessage": "Unterminated string in JSON at position 31 (line 3 column 9)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-springfield-mo-2-1",
-    "totalSqft": null,
-    "oracleSqft": 4589.2,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 12543,
-    "errorMessage": "Unterminated string in JSON at position 26 (line 3 column 4)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-newport-news-va-0",
-    "totalSqft": null,
-    "oracleSqft": 1097.2,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 14561,
-    "errorMessage": "Expected double-quoted property name in JSON at position 25 (line 3 column 3)"
-  },
-  {
-    "variantId": "gemini-z20-measured",
-    "recordId": "nb-newport-news-va-1",
-    "totalSqft": null,
-    "oracleSqft": 1099,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 14709,
-    "errorMessage": "Unterminated string in JSON at position 36 (line 3 column 14)"
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "ex-humble-tx",
-    "totalSqft": 3200,
-    "oracleSqft": 2393,
-    "pctErrorVsOracle": 33.72335979941496,
-    "pitchRatio": 0.5,
-    "durationMs": 11743
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "ex-spring-tx",
-    "totalSqft": 3200,
-    "oracleSqft": 4343.5,
-    "pctErrorVsOracle": -26.326695061586282,
-    "pitchRatio": 0.5,
-    "durationMs": 10227
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "ex-cape-coral-fl",
-    "totalSqft": 2800,
-    "oracleSqft": 2884,
-    "pctErrorVsOracle": -2.912621359223301,
-    "pitchRatio": 0.5,
-    "durationMs": 10806
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "ex-orland-park-il",
-    "totalSqft": 3200,
-    "oracleSqft": 2962.5,
-    "pctErrorVsOracle": 8.016877637130802,
-    "pitchRatio": 0.5,
-    "durationMs": 10116
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "ex-nixa-mo",
-    "totalSqft": 3200,
-    "oracleSqft": 3043.5,
-    "pctErrorVsOracle": 5.142106127813372,
-    "pitchRatio": 0.5,
-    "durationMs": 9318
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "test-thornton-co",
-    "totalSqft": 2800,
-    "oracleSqft": 2080.8,
-    "pctErrorVsOracle": 34.563629373317944,
-    "pitchRatio": 0.5,
-    "durationMs": 10190
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "test-springfield-mo-1",
-    "totalSqft": 2800,
-    "oracleSqft": 2756.8,
-    "pctErrorVsOracle": 1.5670342426001092,
+    "pctErrorVsOracle": -2.638634118809087,
     "pitchRatio": 0.5,
     "durationMs": 8623
   },
   {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "test-houston-tx",
-    "totalSqft": 3800,
-    "oracleSqft": 4186.2,
-    "pctErrorVsOracle": -9.225550618699533,
-    "pitchRatio": 0.5,
-    "durationMs": 10230
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "test-springfield-mo-2",
-    "totalSqft": 3200,
-    "oracleSqft": 5566.1,
-    "pctErrorVsOracle": -42.509117694615625,
-    "pitchRatio": 0.5,
-    "durationMs": 7388
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "test-newport-news-va",
-    "totalSqft": 3200,
-    "oracleSqft": 6117.8,
-    "pctErrorVsOracle": -47.693615351923896,
-    "pitchRatio": 0.5,
-    "durationMs": 9912
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "nb-humble-tx-1",
-    "totalSqft": 2200,
-    "oracleSqft": 1434.7,
-    "pctErrorVsOracle": 53.342162124485945,
-    "pitchRatio": 0.5,
-    "durationMs": 10547
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "nb-spring-tx-0",
-    "totalSqft": 3800,
-    "oracleSqft": 8319.7,
-    "pctErrorVsOracle": -54.325276151784315,
-    "pitchRatio": 0.5,
-    "durationMs": 9277
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "nb-spring-tx-1",
-    "totalSqft": 3200,
-    "oracleSqft": 4436.5,
-    "pctErrorVsOracle": -27.871069536797027,
-    "pitchRatio": 0.5,
-    "durationMs": 5531
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "nb-cape-coral-fl-0",
-    "totalSqft": 2800,
-    "oracleSqft": 2773.7,
-    "pctErrorVsOracle": 0.9481919457764064,
-    "pitchRatio": 0.5,
-    "durationMs": 7843
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "nb-cape-coral-fl-1",
-    "totalSqft": 2800,
-    "oracleSqft": 3017,
-    "pctErrorVsOracle": -7.192575406032482,
-    "pitchRatio": 0.5,
-    "durationMs": 9546
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "nb-orland-park-il-0",
-    "totalSqft": 2800,
-    "oracleSqft": 3250.1,
-    "pctErrorVsOracle": -13.848804652164546,
-    "pitchRatio": 0.5,
-    "durationMs": 9835
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "nb-orland-park-il-1",
-    "totalSqft": 2800,
-    "oracleSqft": 3077.9,
-    "pctErrorVsOracle": -9.028883329542872,
-    "pitchRatio": 0.5,
-    "durationMs": 9728
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
-    "recordId": "nb-nixa-mo-0",
-    "totalSqft": 3200,
-    "oracleSqft": 3543.5,
-    "pctErrorVsOracle": -9.693805559475095,
-    "pitchRatio": 0.5,
-    "durationMs": 5439
-  },
-  {
-    "variantId": "gpt4o-z20-measured",
+    "variantId": "opus-z21-measured",
     "recordId": "nb-nixa-mo-1",
-    "totalSqft": 3200,
+    "totalSqft": 3150,
     "oracleSqft": 3639.3,
-    "pctErrorVsOracle": -12.071002665347736,
+    "pctErrorVsOracle": -13.444893248701678,
     "pitchRatio": 0.5,
-    "durationMs": 6351
+    "durationMs": 8983
   },
   {
-    "variantId": "gpt4o-z20-measured",
+    "variantId": "opus-z21-measured",
     "recordId": "nb-thornton-co-0",
-    "totalSqft": 3200,
+    "totalSqft": 2850,
     "oracleSqft": 5299.1,
-    "pctErrorVsOracle": -39.612387009114755,
+    "pctErrorVsOracle": -46.21728217999283,
     "pitchRatio": 0.5,
-    "durationMs": 8549
+    "durationMs": 6568
   },
   {
-    "variantId": "gpt4o-z20-measured",
+    "variantId": "opus-z21-measured",
     "recordId": "nb-thornton-co-1",
-    "totalSqft": null,
+    "totalSqft": 0,
     "oracleSqft": 2587.1,
-    "pctErrorVsOracle": null,
-    "pitchRatio": null,
-    "durationMs": 8681,
-    "errorMessage": "Unexpected end of JSON input"
+    "pctErrorVsOracle": -100,
+    "pitchRatio": 0,
+    "durationMs": 15676
   },
   {
-    "variantId": "gpt4o-z20-measured",
+    "variantId": "opus-z21-measured",
     "recordId": "nb-springfield-mo-1-0",
-    "totalSqft": 1800,
+    "totalSqft": 0,
     "oracleSqft": 1008.2,
-    "pctErrorVsOracle": 78.53600476096013,
+    "pctErrorVsOracle": -100,
     "pitchRatio": 0.5,
-    "durationMs": 9518
+    "durationMs": 15122
   },
   {
-    "variantId": "gpt4o-z20-measured",
+    "variantId": "opus-z21-measured",
     "recordId": "nb-springfield-mo-1-1",
-    "totalSqft": 3200,
+    "totalSqft": 0,
     "oracleSqft": 2812.1,
-    "pctErrorVsOracle": 13.793961807901573,
-    "pitchRatio": 0.5,
-    "durationMs": 6817
+    "pctErrorVsOracle": -100,
+    "pitchRatio": 0,
+    "durationMs": 15268
   },
   {
-    "variantId": "gpt4o-z20-measured",
+    "variantId": "opus-z21-measured",
     "recordId": "nb-houston-tx-0",
-    "totalSqft": 3200,
+    "totalSqft": 0,
     "oracleSqft": 5513,
-    "pctErrorVsOracle": -41.95537819698893,
-    "pitchRatio": 0.5833333333333334,
-    "durationMs": 5207
+    "pctErrorVsOracle": -100,
+    "pitchRatio": 0.5,
+    "durationMs": 11222
   },
   {
-    "variantId": "gpt4o-z20-measured",
+    "variantId": "opus-z21-measured",
     "recordId": "nb-houston-tx-1",
     "totalSqft": 0,
     "oracleSqft": 4276.4,
     "pctErrorVsOracle": -100,
     "pitchRatio": 0,
-    "durationMs": 5866
+    "durationMs": 12193
   },
   {
-    "variantId": "gpt4o-z20-measured",
+    "variantId": "opus-z21-measured",
     "recordId": "nb-springfield-mo-2-0",
-    "totalSqft": 3500,
+    "totalSqft": 4400,
     "oracleSqft": 5721.4,
-    "pctErrorVsOracle": -38.826161429020864,
-    "pitchRatio": 0.5833333333333334,
-    "durationMs": 7825
+    "pctErrorVsOracle": -23.095745796483374,
+    "pitchRatio": 0.5,
+    "durationMs": 14755
   },
   {
-    "variantId": "gpt4o-z20-measured",
+    "variantId": "opus-z21-measured",
     "recordId": "nb-springfield-mo-2-1",
-    "totalSqft": 3800,
+    "totalSqft": 5200,
     "oracleSqft": 4589.2,
-    "pctErrorVsOracle": -17.196897062668874,
+    "pctErrorVsOracle": 13.309509282663651,
     "pitchRatio": 0.5833333333333334,
-    "durationMs": 8045
+    "durationMs": 14387
   },
   {
-    "variantId": "gpt4o-z20-measured",
+    "variantId": "opus-z21-measured",
+    "recordId": "nb-newport-news-va-0",
+    "totalSqft": 2150,
+    "oracleSqft": 1097.2,
+    "pctErrorVsOracle": 95.9533357637623,
+    "pitchRatio": 0.4166666666666667,
+    "durationMs": 12884
+  },
+  {
+    "variantId": "opus-z21-measured",
+    "recordId": "nb-newport-news-va-1",
+    "totalSqft": 2050,
+    "oracleSqft": 1099,
+    "pctErrorVsOracle": 86.53321201091902,
+    "pitchRatio": 0.5,
+    "durationMs": 7534
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "ex-humble-tx",
+    "totalSqft": 3200,
+    "oracleSqft": 2393,
+    "pctErrorVsOracle": 33.72335979941496,
+    "pitchRatio": 0.5,
+    "durationMs": 13835
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "ex-spring-tx",
+    "totalSqft": 3200,
+    "oracleSqft": 4343.5,
+    "pctErrorVsOracle": -26.326695061586282,
+    "pitchRatio": 0.5833333333333334,
+    "durationMs": 12435
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "ex-cape-coral-fl",
+    "totalSqft": 2200,
+    "oracleSqft": 2884,
+    "pctErrorVsOracle": -23.71705963938974,
+    "pitchRatio": 0.5,
+    "durationMs": 12951
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "ex-orland-park-il",
+    "totalSqft": 2800,
+    "oracleSqft": 2962.5,
+    "pctErrorVsOracle": -5.485232067510549,
+    "pitchRatio": 0.5,
+    "durationMs": 11957
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "ex-nixa-mo",
+    "totalSqft": 3200,
+    "oracleSqft": 3043.5,
+    "pctErrorVsOracle": 5.142106127813372,
+    "pitchRatio": 0.5,
+    "durationMs": 10926
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "test-thornton-co",
+    "totalSqft": 2800,
+    "oracleSqft": 2080.8,
+    "pctErrorVsOracle": 34.563629373317944,
+    "pitchRatio": 0.5,
+    "durationMs": 14333
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "test-springfield-mo-1",
+    "totalSqft": 2800,
+    "oracleSqft": 2756.8,
+    "pctErrorVsOracle": 1.5670342426001092,
+    "pitchRatio": 0.5,
+    "durationMs": 14023
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "test-houston-tx",
+    "totalSqft": 3200,
+    "oracleSqft": 4186.2,
+    "pctErrorVsOracle": -23.558358415746973,
+    "pitchRatio": 0.5,
+    "durationMs": 21799
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "test-springfield-mo-2",
+    "totalSqft": 3200,
+    "oracleSqft": 5566.1,
+    "pctErrorVsOracle": -42.509117694615625,
+    "pitchRatio": 0.5,
+    "durationMs": 18998
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "test-newport-news-va",
+    "totalSqft": 3200,
+    "oracleSqft": 6117.8,
+    "pctErrorVsOracle": -47.693615351923896,
+    "pitchRatio": 0.5,
+    "durationMs": 25413
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-humble-tx-1",
+    "totalSqft": 2800,
+    "oracleSqft": 1434.7,
+    "pctErrorVsOracle": 95.1627517948003,
+    "pitchRatio": 0.5,
+    "durationMs": 24514
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-spring-tx-0",
+    "totalSqft": 3800,
+    "oracleSqft": 8319.7,
+    "pctErrorVsOracle": -54.325276151784315,
+    "pitchRatio": 0.5,
+    "durationMs": 19215
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-spring-tx-1",
+    "totalSqft": 3200,
+    "oracleSqft": 4436.5,
+    "pctErrorVsOracle": -27.871069536797027,
+    "pitchRatio": 0.5,
+    "durationMs": 17303
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-cape-coral-fl-0",
+    "totalSqft": 2800,
+    "oracleSqft": 2773.7,
+    "pctErrorVsOracle": 0.9481919457764064,
+    "pitchRatio": 0.5,
+    "durationMs": 17288
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-cape-coral-fl-1",
+    "totalSqft": 2800,
+    "oracleSqft": 3017,
+    "pctErrorVsOracle": -7.192575406032482,
+    "pitchRatio": 0.5,
+    "durationMs": 18518
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-orland-park-il-0",
+    "totalSqft": 3200,
+    "oracleSqft": 3250.1,
+    "pctErrorVsOracle": -1.5414910310451957,
+    "pitchRatio": 0.5,
+    "durationMs": 29531
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-orland-park-il-1",
+    "totalSqft": 2800,
+    "oracleSqft": 3077.9,
+    "pctErrorVsOracle": -9.028883329542872,
+    "pitchRatio": 0.5,
+    "durationMs": 18968
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-nixa-mo-0",
+    "totalSqft": 2800,
+    "oracleSqft": 3543.5,
+    "pctErrorVsOracle": -20.982079864540708,
+    "pitchRatio": 0.5,
+    "durationMs": 13300
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-nixa-mo-1",
+    "totalSqft": 3200,
+    "oracleSqft": 3639.3,
+    "pctErrorVsOracle": -12.071002665347736,
+    "pitchRatio": 0.5,
+    "durationMs": 11161
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-thornton-co-0",
+    "totalSqft": 3200,
+    "oracleSqft": 5299.1,
+    "pctErrorVsOracle": -39.612387009114755,
+    "pitchRatio": 0.5,
+    "durationMs": 7014
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-thornton-co-1",
+    "totalSqft": 3200,
+    "oracleSqft": 2587.1,
+    "pctErrorVsOracle": 23.690618839627387,
+    "pitchRatio": 0.5,
+    "durationMs": 12219
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-springfield-mo-1-0",
+    "totalSqft": 1800,
+    "oracleSqft": 1008.2,
+    "pctErrorVsOracle": 78.53600476096013,
+    "pitchRatio": 0.5,
+    "durationMs": 12803
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-springfield-mo-1-1",
+    "totalSqft": 3200,
+    "oracleSqft": 2812.1,
+    "pctErrorVsOracle": 13.793961807901573,
+    "pitchRatio": 0.5,
+    "durationMs": 12153
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-houston-tx-0",
+    "totalSqft": 3800,
+    "oracleSqft": 5513,
+    "pctErrorVsOracle": -31.07201160892436,
+    "pitchRatio": 0.5833333333333334,
+    "durationMs": 11199
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-houston-tx-1",
+    "totalSqft": 3200,
+    "oracleSqft": 4276.4,
+    "pctErrorVsOracle": -25.17070433074548,
+    "pitchRatio": 0.5,
+    "durationMs": 14369
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-springfield-mo-2-0",
+    "totalSqft": 3200,
+    "oracleSqft": 5721.4,
+    "pctErrorVsOracle": -44.06963330653336,
+    "pitchRatio": 0.5,
+    "durationMs": 13350
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
+    "recordId": "nb-springfield-mo-2-1",
+    "totalSqft": 3200,
+    "oracleSqft": 4589.2,
+    "pctErrorVsOracle": -30.27107121066852,
+    "pitchRatio": 0.5,
+    "durationMs": 12976
+  },
+  {
+    "variantId": "gpt4o-z19-measured",
     "recordId": "nb-newport-news-va-0",
     "totalSqft": 2200,
     "oracleSqft": 1097.2,
     "pctErrorVsOracle": 100.51039008384979,
     "pitchRatio": 0.5,
-    "durationMs": 9269
+    "durationMs": 13078
   },
   {
-    "variantId": "gpt4o-z20-measured",
+    "variantId": "gpt4o-z19-measured",
     "recordId": "nb-newport-news-va-1",
     "totalSqft": 2200,
     "oracleSqft": 1099,
     "pctErrorVsOracle": 100.18198362147406,
     "pitchRatio": 0.5,
-    "durationMs": 9473
+    "durationMs": 6708
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "ex-humble-tx",
+    "totalSqft": null,
+    "oracleSqft": 2393,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 25094,
+    "errorMessage": "could not parse JSON from: {\n  \"totalSqft\": 2980,\n  \"pitch"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "ex-spring-tx",
+    "totalSqft": null,
+    "oracleSqft": 4343.5,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 23964,
+    "errorMessage": "could not parse JSON from: {\n  \"totalSqft\": 4785,\n  \"pitch\": \"8"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "ex-cape-coral-fl",
+    "totalSqft": null,
+    "oracleSqft": 2884,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 23165,
+    "errorMessage": "could not parse JSON from: {\n  \"totalSqft\": 2352,\n  \"pitch\":"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "ex-orland-park-il",
+    "totalSqft": null,
+    "oracleSqft": 2962.5,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 24144,
+    "errorMessage": "could not parse JSON from: {\n  \"totalSqft\": 2985,\n  \"pitch\": \""
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "ex-nixa-mo",
+    "totalSqft": null,
+    "oracleSqft": 3043.5,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 21181,
+    "errorMessage": "could not parse JSON from: {\n  \"totalSqft\": 3985,\n"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "test-thornton-co",
+    "totalSqft": null,
+    "oracleSqft": 2080.8,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 20020,
+    "errorMessage": "could not parse JSON from: {\n  \"totalSqft\": 2150,\n  \""
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "test-springfield-mo-1",
+    "totalSqft": null,
+    "oracleSqft": 2756.8,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 20182,
+    "errorMessage": "could not parse JSON from: {\n  \"totalSqft\": 3125,\n  \"pitch"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "test-houston-tx",
+    "totalSqft": null,
+    "oracleSqft": 4186.2,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 19211,
+    "errorMessage": "could not parse JSON from: {\n  \"totalSqft\": 4872,\n  \"pitch\": \""
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "test-springfield-mo-2",
+    "totalSqft": null,
+    "oracleSqft": 5566.1,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 25639,
+    "errorMessage": "could not parse JSON from: {\n  \"totalSqft\": 4515,\n  \"pitch\": \""
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "test-newport-news-va",
+    "totalSqft": null,
+    "oracleSqft": 6117.8,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 26103,
+    "errorMessage": "could not parse JSON from: {\n  \"totalSqft\": 5000,\n  \"pitch\":"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-humble-tx-1",
+    "totalSqft": null,
+    "oracleSqft": 1434.7,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 26706,
+    "errorMessage": "could not parse JSON from: {\n  \"totalSqft\": 2430,\n  \"pitch\": \"6"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-spring-tx-0",
+    "totalSqft": null,
+    "oracleSqft": 8319.7,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 27462,
+    "errorMessage": "could not parse JSON from: {\n  \"totalSqft\": 6150,\n  \"pitch\":"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-spring-tx-1",
+    "totalSqft": null,
+    "oracleSqft": 4436.5,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 9727,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-cape-coral-fl-0",
+    "totalSqft": null,
+    "oracleSqft": 2773.7,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 11391,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-cape-coral-fl-1",
+    "totalSqft": null,
+    "oracleSqft": 3017,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 12492,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-orland-park-il-0",
+    "totalSqft": null,
+    "oracleSqft": 3250.1,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 12099,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-orland-park-il-1",
+    "totalSqft": null,
+    "oracleSqft": 3077.9,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 12515,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-nixa-mo-0",
+    "totalSqft": null,
+    "oracleSqft": 3543.5,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 10981,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-nixa-mo-1",
+    "totalSqft": null,
+    "oracleSqft": 3639.3,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 14284,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-thornton-co-0",
+    "totalSqft": null,
+    "oracleSqft": 5299.1,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 18698,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-thornton-co-1",
+    "totalSqft": null,
+    "oracleSqft": 2587.1,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 20353,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-springfield-mo-1-0",
+    "totalSqft": null,
+    "oracleSqft": 1008.2,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 20565,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-springfield-mo-1-1",
+    "totalSqft": null,
+    "oracleSqft": 2812.1,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 16975,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-houston-tx-0",
+    "totalSqft": null,
+    "oracleSqft": 5513,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 12841,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-houston-tx-1",
+    "totalSqft": null,
+    "oracleSqft": 4276.4,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 15780,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-springfield-mo-2-0",
+    "totalSqft": null,
+    "oracleSqft": 5721.4,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 15091,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-springfield-mo-2-1",
+    "totalSqft": null,
+    "oracleSqft": 4589.2,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 14781,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-newport-news-va-0",
+    "totalSqft": null,
+    "oracleSqft": 1097.2,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 15743,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "gemini-z19-measured",
+    "recordId": "nb-newport-news-va-1",
+    "totalSqft": null,
+    "oracleSqft": 1099,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 8861,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "ex-humble-tx",
+    "totalSqft": null,
+    "oracleSqft": 2393,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 21778,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "ex-spring-tx",
+    "totalSqft": null,
+    "oracleSqft": 4343.5,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 21815,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "ex-cape-coral-fl",
+    "totalSqft": null,
+    "oracleSqft": 2884,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 21699,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "ex-orland-park-il",
+    "totalSqft": null,
+    "oracleSqft": 2962.5,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 21408,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "ex-nixa-mo",
+    "totalSqft": null,
+    "oracleSqft": 3043.5,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 18445,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "test-thornton-co",
+    "totalSqft": null,
+    "oracleSqft": 2080.8,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 19414,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "test-springfield-mo-1",
+    "totalSqft": null,
+    "oracleSqft": 2756.8,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 19726,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "test-houston-tx",
+    "totalSqft": null,
+    "oracleSqft": 4186.2,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 26860,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "test-springfield-mo-2",
+    "totalSqft": null,
+    "oracleSqft": 5566.1,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 14653,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "test-newport-news-va",
+    "totalSqft": null,
+    "oracleSqft": 6117.8,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 18123,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-humble-tx-1",
+    "totalSqft": null,
+    "oracleSqft": 1434.7,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 15956,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-spring-tx-0",
+    "totalSqft": null,
+    "oracleSqft": 8319.7,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 17762,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-spring-tx-1",
+    "totalSqft": null,
+    "oracleSqft": 4436.5,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 17079,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-cape-coral-fl-0",
+    "totalSqft": null,
+    "oracleSqft": 2773.7,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 16397,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-cape-coral-fl-1",
+    "totalSqft": null,
+    "oracleSqft": 3017,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 15313,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-orland-park-il-0",
+    "totalSqft": null,
+    "oracleSqft": 3250.1,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 17078,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-orland-park-il-1",
+    "totalSqft": null,
+    "oracleSqft": 3077.9,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 16779,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-nixa-mo-0",
+    "totalSqft": null,
+    "oracleSqft": 3543.5,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 15205,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-nixa-mo-1",
+    "totalSqft": null,
+    "oracleSqft": 3639.3,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 15413,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-thornton-co-0",
+    "totalSqft": null,
+    "oracleSqft": 5299.1,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 12467,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-thornton-co-1",
+    "totalSqft": null,
+    "oracleSqft": 2587.1,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 16651,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-springfield-mo-1-0",
+    "totalSqft": null,
+    "oracleSqft": 1008.2,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 17127,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-springfield-mo-1-1",
+    "totalSqft": null,
+    "oracleSqft": 2812.1,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 16763,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-houston-tx-0",
+    "totalSqft": null,
+    "oracleSqft": 5513,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 13556,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-houston-tx-1",
+    "totalSqft": null,
+    "oracleSqft": 4276.4,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 9881,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-springfield-mo-2-0",
+    "totalSqft": null,
+    "oracleSqft": 5721.4,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 9149,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-springfield-mo-2-1",
+    "totalSqft": null,
+    "oracleSqft": 4589.2,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 9077,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-newport-news-va-0",
+    "totalSqft": null,
+    "oracleSqft": 1097.2,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 14787,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+  },
+  {
+    "variantId": "sonnet-z19-measured",
+    "recordId": "nb-newport-news-va-1",
+    "totalSqft": null,
+    "oracleSqft": 1099,
+    "pctErrorVsOracle": null,
+    "pitchRatio": null,
+    "durationMs": 10700,
+    "errorMessage": "OpenRouter 403: {\"error\":{\"message\":\"Key limit exceeded (daily limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
   }
 ]
