@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Sparkles } from 'lucide-react';
 import { AddressForm } from './components/AddressForm';
+import { LoadingStages } from './components/LoadingStages';
 import { HeroResult } from './components/HeroResult';
 import { MethodsCard } from './components/MethodsCard';
 import { AerialCard } from './components/AerialCard';
@@ -46,6 +47,10 @@ export default function App() {
         <div className="mt-10">
           <AddressForm onSubmit={handle} pending={pending} />
         </div>
+
+        {pending && !run && (
+          <div className="mt-12"><LoadingStages /></div>
+        )}
 
         {error && (
           <div className="mt-8 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800">
